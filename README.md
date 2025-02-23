@@ -1,0 +1,1 @@
+# riverpod_clean_architecture_template
