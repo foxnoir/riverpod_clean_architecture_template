@@ -1,0 +1,7 @@
+{
+  "@@locale": "de",
+  "fetching_users": "Benutzer werden abgerufen",
+  "creating_user": "Benutzer wird erstellt",
+  "add_user": "Benutzer hinzufügen",
+  "page_not_found": "Seite nicht gefunden"
+}

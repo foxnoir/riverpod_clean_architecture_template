@@ -1,0 +1,14 @@
+[
+  {
+    "id": "test.id1",
+    "name": "test.name1",
+    "createdAt": "test.createdAt1",
+    "avatar": "test.avatar1"
+  },
+  {
+    "id": "test.id",
+    "name": "test.name",
+    "createdAt": "test.createdAt",
+    "avatar": "test.avatar"
+  }
+]
