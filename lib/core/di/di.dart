@@ -1,4 +1,4 @@
-import 'package:book_lover/core/di/di.config.dart';
+import 'package:book_dragon/core/di/di.config.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 

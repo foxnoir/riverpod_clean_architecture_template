@@ -1,4 +1,4 @@
-import 'package:book_lover/core/errors/exceptions.dart';
+import 'package:book_dragon/core/errors/exceptions.dart';
 import 'package:equatable/equatable.dart';
 
 abstract class Failure extends Equatable {

@@ -1,4 +1,4 @@
-import 'package:book_lover/core/theme/media_consts.dart';
+import 'package:book_dragon/core/theme/media_consts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -42,11 +42,11 @@ class AppElevatedButton extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  left: textWidth / 2 + 85.w,
+                  left: textWidth / 2 + 93.w,
                   child: Image.asset(
                     AppImg.btnIcon,
                     fit: BoxFit.cover,
-                    width: 28.w,
+                    width: 20.w,
                   ),
                 ),
               ],

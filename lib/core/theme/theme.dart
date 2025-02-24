@@ -1,4 +1,4 @@
-import 'package:book_lover/core/theme/consts.dart';
+import 'package:book_dragon/core/theme/consts.dart';
 import 'package:flutter/material.dart';
 
 ThemeData getLightTheme() {
@@ -7,19 +7,20 @@ ThemeData getLightTheme() {
 
 ThemeData _buildTheme(ColorScheme colorScheme) {
   final textTheme = TextTheme(
+    /// starter headline
     headlineLarge: TextStyle(
-      fontSize: AppFontSize.s21,
+      fontSize: AppFontSize.s30,
       fontWeight: AppFontWeight.bold,
-      color: colorScheme.onSurface,
+      color: colorScheme.tertiary,
     ),
     headlineMedium: const TextStyle(
-      fontSize: AppFontSize.s19,
-      fontWeight: AppFontWeight.bold,
-      color: AppColor.grey,
+      fontSize: AppFontSize.s15,
+      fontWeight: AppFontWeight.medium,
+      color: AppColor.darkYellow,
     ),
     headlineSmall: TextStyle(
       fontSize: AppFontSize.s19,
-      fontWeight: AppFontWeight.bold,
+      fontWeight: AppFontWeight.medium,
       color: colorScheme.onPrimary,
     ),
     labelSmall: TextStyle(
@@ -28,7 +29,7 @@ ThemeData _buildTheme(ColorScheme colorScheme) {
       color: colorScheme.tertiary,
     ),
     labelMedium: TextStyle(
-      fontSize: AppFontSize.s16,
+      fontSize: AppFontSize.s15,
       fontWeight: AppFontWeight.bold,
       color: colorScheme.onPrimary,
     ),
@@ -92,10 +93,10 @@ ThemeData _buildTheme(ColorScheme colorScheme) {
 
 ColorScheme _getColorScheme(Brightness brightness) {
   return const ColorScheme.light(
-    primary: AppColor.darkRose,
-    secondary: AppColor.darkGreen,
-    tertiary: AppColor.darkGrey,
+    primary: AppColor.lightYellow,
+    secondary: AppColor.green,
+    tertiary: AppColor.darkBrown,
     error: AppColor.error,
-    onSurface: AppColor.grey,
+    onSurface: AppColor.creme,
   );
 }

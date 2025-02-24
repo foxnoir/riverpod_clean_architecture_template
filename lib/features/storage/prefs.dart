@@ -1,6 +1,6 @@
 // ignore_for_file: aFuture<void>_positional_boolean_parameter asyncs
 
-import 'package:book_lover/core/log/logger.dart';
+import 'package:book_dragon/core/log/logger.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

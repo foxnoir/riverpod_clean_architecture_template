@@ -12,7 +12,6 @@ class AppConst {
 class AppColor {
   const AppColor._();
 
-  static const Color white = Color(0xFFFFFFFF);
   static const Color black = Color(0xFF000000);
   static const Color darkGrey = Color(0xFF595959);
   static const Color grey = Color(0xFF222222);
@@ -20,10 +19,13 @@ class AppColor {
   static const Color boxGrey = Color(0xFF9E9E9E);
   static const Color error = Color(0xFF771305);
 
-  static const Color darkGreen = Color(0xFF70887A);
-  static const Color lightGreen = Color(0xFFA6b69C);
-  static const Color darkRose = Color(0xFFD99F8E);
-  static const Color lightRose = Color(0xFFF1B79A);
+  static const Color darkBrown = Color(0xFF793e25);
+  static const Color lightBrown = Color(0xFF935f46);
+  static const Color darkYellow = Color(0xFFbf793d);
+  static const Color lightYellow = Color(0xFFf6bd88);
+  static const Color green = Color(0xFF6D6A4B);
+  static const Color purple = Color(0xFF915d52);
+  static const Color creme = Color(0xFFf8fdf9);
 }
 
 class AppFont {
@@ -48,12 +50,16 @@ class AppFontSize {
   static const double s11 = 11;
   static const double s12 = 12;
   static const double s14 = 14;
-  static const double s16 = 16;
+
+  /// headline medium (starter subtext)
+  static const double s15 = 15;
   static const double s17 = 17;
   static const double s18 = 18;
   static const double s19 = 19;
   static const double s21 = 21;
-  static const double s23 = 22;
+
+  /// headline large (starter headline)
+  static const double s30 = 30;
 
   double scaleSize(BuildContext context, double size) {
     /// Base screen width used in your design

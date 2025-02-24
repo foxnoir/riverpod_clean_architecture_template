@@ -7,6 +7,7 @@ class AppSvgIcon {
 class AppImg {
   const AppImg._();
 
+  static const String startBg = 'assets/images/start/start_bg.png';
   static const String page1 = 'assets/images/start/1.png';
   static const String page2 = 'assets/images/start/2.png';
   static const String page3 = 'assets/images/start/3.png';

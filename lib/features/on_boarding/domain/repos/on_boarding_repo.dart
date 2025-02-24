@@ -1,4 +1,4 @@
-import 'package:book_lover/core/utils/type_defs.dart';
+import 'package:book_dragon/core/utils/type_defs.dart';
 
 abstract class OnBoardingRepo {
   const OnBoardingRepo();

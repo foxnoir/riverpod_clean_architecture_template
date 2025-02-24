@@ -1,7 +1,7 @@
-import 'package:book_lover/core/router/app_router_names.dart';
-import 'package:book_lover/core/router/page_not_found_screen.dart';
-import 'package:book_lover/core/router/transiton_page.dart';
-import 'package:book_lover/features/on_boarding/presentation/views/on_boarding_screen.dart';
+import 'package:book_dragon/core/router/app_router_names.dart';
+import 'package:book_dragon/core/router/page_not_found_screen.dart';
+import 'package:book_dragon/core/router/transiton_page.dart';
+import 'package:book_dragon/features/on_boarding/presentation/views/on_boarding_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 

@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:book_lover/core/di/di.dart';
-import 'package:book_lover/core/log/logger.dart';
-import 'package:book_lover/core/router/app_router.dart';
-import 'package:book_lover/core/theme/theme.dart';
+import 'package:book_dragon/core/di/di.dart';
+import 'package:book_dragon/core/log/logger.dart';
+import 'package:book_dragon/core/router/app_router.dart';
+import 'package:book_dragon/core/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -24,17 +24,17 @@ Future<void> _loadApp() async {
     await DI.getIt.reset();
     DI.getIt.registerSingleton<bool>(false);
     await configureInjection(Environment.dev);
-    runApp(BookLover());
+    runApp(BookDragon());
   } catch (ex, st) {
     logger.error('startup exception', error: ex, stackTrace: st);
   }
 }
 
-class BookLover extends StatelessWidget {
-  factory BookLover() => instance;
-  const BookLover._internal();
+class BookDragon extends StatelessWidget {
+  factory BookDragon() => instance;
+  const BookDragon._internal();
 
-  static const BookLover instance = BookLover._internal();
+  static const BookDragon instance = BookDragon._internal();
 
   @override
   Widget build(BuildContext context) {

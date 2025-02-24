@@ -1,8 +1,6 @@
-import 'package:book_lover/core/extensions/localization_extensions.dart';
-import 'package:book_lover/features/on_boarding/domain/entities/on_boarding_content.dart';
-import 'package:book_lover/global_widgets/app_elevated_button.dart';
+import 'package:book_dragon/core/extensions/context_extensions.dart';
+import 'package:book_dragon/features/on_boarding/domain/entities/on_boarding_content.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class OnBoardingBody extends StatelessWidget {
@@ -19,30 +17,19 @@ class OnBoardingBody extends StatelessWidget {
           child: Image.asset(content.image, height: 310.w),
         ),
         Padding(
-          padding: const EdgeInsets.all(20).copyWith(bottom: 0),
+          padding: const EdgeInsets.all(25).copyWith(bottom: 0),
           child: Column(
             children: [
               Text(
                 content.title,
                 textAlign: TextAlign.center,
-                style: const TextStyle(
-                  fontSize: 40,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: context.theme.textTheme.headlineLarge,
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 10, bottom: 50),
-                child: Text(
-                  content.description,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(fontSize: 14),
-                ),
-              ),
-              AppElevatedButton(
-                btnText: AppLocalizations.of(context).getStarted,
-                onPressed: () {
-                  // TODO(get-started-btn): go to auth
-                },
+              SizedBox(height: 20.h),
+              Text(
+                content.description,
+                textAlign: TextAlign.center,
+                style: context.theme.textTheme.headlineMedium,
               ),
             ],
           ),

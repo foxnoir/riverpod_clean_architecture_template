@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:book_lover/features/on_boarding/domain/usecases/cache_first_timer.dart';
-import 'package:book_lover/features/on_boarding/domain/usecases/check_if_user_is_first_timer.dart';
+import 'package:book_dragon/features/on_boarding/domain/usecases/cache_first_timer.dart';
+import 'package:book_dragon/features/on_boarding/domain/usecases/check_if_user_is_first_timer.dart';
 import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
 

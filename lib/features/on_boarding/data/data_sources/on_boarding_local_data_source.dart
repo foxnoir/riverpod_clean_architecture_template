@@ -1,5 +1,5 @@
-import 'package:book_lover/core/errors/exceptions.dart';
-import 'package:book_lover/features/storage/prefs.dart';
+import 'package:book_dragon/core/errors/exceptions.dart';
+import 'package:book_dragon/features/storage/prefs.dart';
 import 'package:injectable/injectable.dart';
 
 /// Data Source:

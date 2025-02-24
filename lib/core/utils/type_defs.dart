@@ -1,4 +1,4 @@
-import 'package:book_lover/core/errors/failures.dart';
+import 'package:book_dragon/core/errors/failures.dart';
 import 'package:dartz/dartz.dart';
 
 /// short generetic name for types
