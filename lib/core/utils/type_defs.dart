@@ -1,5 +1,5 @@
+import 'package:book_lover/core/errors/failures.dart';
 import 'package:dartz/dartz.dart';
-import 'package:todo_manager/core/errors/failures.dart';
 
 /// short generetic name for types
 

@@ -1,9 +1,9 @@
+import 'package:book_lover/core/router/app_router_names.dart';
+import 'package:book_lover/core/router/page_not_found_screen.dart';
+import 'package:book_lover/core/router/transiton_page.dart';
+import 'package:book_lover/features/on_boarding/presentation/views/on_boarding_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:todo_manager/core/router/app_router_names.dart';
-import 'package:todo_manager/core/router/page_not_found.dart';
-import 'package:todo_manager/core/router/transiton_page.dart';
-import 'package:todo_manager/features/auth/presentation/views/auth_screen.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
@@ -12,9 +12,17 @@ class AppRouter {
   final bool isRouteTesting;
 
   GoRouter router([String? initialLocation]) => GoRouter(
-        initialLocation: AppRouteNames.auth,
+        initialLocation: AppRouteNames.onBoarding,
         navigatorKey: navigatorKey,
-        errorBuilder: (context, state) => const PageNotFound(),
+        errorBuilder: (context, state) => PageNotFoundScreen(
+          isRouteTesting: isRouteTesting,
+        ),
+        redirect: (context, state) {
+          if ('${state.uri}'.contains('/google/link')) {
+            return AppRouteNames.onBoarding;
+          }
+          return null;
+        },
         routes: [
           ShellRoute(
             builder: (context, state, child) => Scaffold(
@@ -22,10 +30,10 @@ class AppRouter {
             ),
             routes: [
               GoRoute(
-                path: AppRouteNames.auth,
-                name: AppRouteNames.auth,
+                path: AppRouteNames.onBoarding,
+                name: AppRouteNames.onBoarding,
                 builder: (context, state) =>
-                    AuthScreen(isRouteTesting: isRouteTesting),
+                    OnBoardingScreen(isRouteTesting: isRouteTesting),
               ),
             ],
           ),
@@ -40,11 +48,11 @@ extension GoRouterLocation on GoRouter {
     final lastMatch = isRouteTesting
         ? RouteMatch(
             route: GoRoute(
-              path: AppRouteNames.auth,
-              name: AppRouteNames.auth,
+              path: AppRouteNames.onBoarding,
+              name: AppRouteNames.onBoarding,
               pageBuilder: (context, state) => SlideTransitionPage(
                 key: state.pageKey,
-                child: AuthScreen(isRouteTesting: isRouteTesting),
+                child: OnBoardingScreen(isRouteTesting: isRouteTesting),
               ),
             ),
             pageKey: const ValueKey('routeTesting'),

@@ -1,4 +1,4 @@
-name: todo_manager
+name: book_lover
 description: "riverpod and clean architecture template app"
 
 publish_to: "none"
@@ -37,6 +37,8 @@ dependencies:
   riverpod_lint: ^2.6.3
   riverpod: ^2.6.1
   riverpod_annotation: ^2.6.1
+  smooth_page_indicator: ^1.2.1
+  flutter_screenutil: ^5.9.3
 
 dev_dependencies:
   flutter_test:
@@ -51,49 +53,61 @@ dev_dependencies:
   custom_lint: ^0.7.0
   riverpod_generator: ^2.6.3
 
+flutter_icons:
+  ios: true
+  image_path: "assets/images/launcher_icon/app_icon.png"
+  adaptive_icon_background: "#FFFFFF"
+  adaptive_icon_foreground: "assets/images/launcher_icon/app_icon.png"
+
+flutter_native_splash:
+  color: "#fefefe"
+  image: assets/images/splash.png
+  ios: true
+  ios_content_mode: scaleToFill
+
 flutter:
   generate: true
   uses-material-design: true
 
-  # assets:
-  #   - assets/fonts/
-  #   - assets/icons/
-  #   - assets/images/
-  #   - assets/lottie/
+  assets:
+    - assets/fonts/
+    - assets/app_icons/
+    - assets/images/start/
+    - assets/images/backgrounds/
 
-  # fonts:
-  #   - family: Aeonik
-  #     fonts:
-  #       - asset: assets/fonts/aeonik/AeonikTRIAL-Bold.otf
-  #         weight: 700
-  #       - asset: assets/fonts/aeonik/AeonikTRIAL-BoldItalic.otf
-  #         style: italic
-  #         weight: 700
-  #       - asset: assets/fonts/aeonik/AeonikTRIAL-Light.otf
-  #         weight: 300
-  #       - asset: assets/fonts/aeonik/AeonikTRIAL-LightItalic.otf
-  #         style: italic
-  #         weight: 300
-  #       - asset: assets/fonts/aeonik/AeonikTRIAL-Regular.otf
-  #         weight: 400
-  #       - asset: assets/fonts/aeonik/AeonikTRIAL-RegularItalic.otf
-  #         style: italic
-  #         weight: 400
-  #   - family: Poppins
-  #     fonts:
-  #       - asset: assets/fonts/poppins/Poppins-Thin.ttf
-  #         weight: 100
-  #       - asset: assets/fonts/poppins/Poppins-ExtraLight.ttf
-  #         weight: 200
-  #       - asset: assets/fonts/poppins/Poppins-Light.ttf
-  #         weight: 300
-  #       - asset: assets/fonts/poppins/Poppins-Regular.ttf
-  #         weight: 400
-  #       - asset: assets/fonts/poppins/Poppins-Medium.ttf
-  #         weight: 500
-  #       - asset: assets/fonts/poppins/Poppins-SemiBold.ttf
-  #         weight: 600
-  #       - asset: assets/fonts/poppins/Poppins-Bold.ttf
-  #         weight: 700
-  #       - asset: assets/fonts/poppins/Poppins-ExtraBold.ttf
-  #         weight: 800
+  fonts:
+    - family: Aeonik
+      fonts:
+        - asset: assets/fonts/aeonik/AeonikTRIAL-Bold.otf
+          weight: 700
+        - asset: assets/fonts/aeonik/AeonikTRIAL-BoldItalic.otf
+          style: italic
+          weight: 700
+        - asset: assets/fonts/aeonik/AeonikTRIAL-Light.otf
+          weight: 300
+        - asset: assets/fonts/aeonik/AeonikTRIAL-LightItalic.otf
+          style: italic
+          weight: 300
+        - asset: assets/fonts/aeonik/AeonikTRIAL-Regular.otf
+          weight: 400
+        - asset: assets/fonts/aeonik/AeonikTRIAL-RegularItalic.otf
+          style: italic
+          weight: 400
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/poppins/Poppins-Thin.ttf
+          weight: 100
+        - asset: assets/fonts/poppins/Poppins-ExtraLight.ttf
+          weight: 200
+        - asset: assets/fonts/poppins/Poppins-Light.ttf
+          weight: 300
+        - asset: assets/fonts/poppins/Poppins-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/poppins/Poppins-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/poppins/Poppins-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/poppins/Poppins-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/poppins/Poppins-ExtraBold.ttf
+          weight: 800

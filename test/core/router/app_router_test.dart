@@ -1,10 +1,11 @@
+// Unit Test file for app_router.dartimport 'package:flutter/material.dart';
+import 'package:book_lover/core/router/app_router.dart';
+import 'package:book_lover/core/router/app_router_names.dart';
+import 'package:book_lover/core/router/page_not_found_screen.dart';
+import 'package:book_lover/features/on_boarding/presentation/views/on_boarding_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
-import 'package:todo_manager/core/router/app_router.dart';
-import 'package:todo_manager/core/router/app_router_names.dart';
-import 'package:todo_manager/core/router/page_not_found.dart';
-import 'package:todo_manager/features/auth/presentation/views/auth_screen.dart';
 
 void main() {
   late AppRouter appRouter;
@@ -24,7 +25,8 @@ void main() {
   }
 
   group('AppRouter Tests', () {
-    testWidgets('navigates to [AuthScreen] for initial route', (tester) async {
+    testWidgets('navigates to [OnBoardingScreen] for initial route',
+        (tester) async {
       // Arrange
       final router = appRouter.router();
 
@@ -33,38 +35,39 @@ void main() {
       await tester.pumpAndSettle();
 
       // Assert
-      expect(find.byType(AuthScreen), findsOneWidget);
+      expect(find.byType(OnBoardingScreen), findsOneWidget);
     });
 
-    testWidgets('Should show [AuthScreen] when route is [/auth]',
+    testWidgets('Should show [OnBoardingScreen] when route is [/onBoarding]',
         (tester) async {
       // Arrange
-      final router = appRouter.router('/auth');
+      final router = appRouter.router('/onBoarding');
 
       // Act
       await pumpRouter(tester, router);
       await tester.pumpAndSettle();
 
       // Assert
-      expect(find.byType(AuthScreen), findsOneWidget);
+      expect(find.byType(OnBoardingScreen), findsOneWidget);
     });
 
     testWidgets(
-        'Should show [AuthScreen] when navigating to [AppRouteNames.auth]',
-        (tester) async {
+        'Should show [OnBoardingScreen] '
+        'when navigating to [AppRouteNames.onBoarding]', (tester) async {
       // Arrange
       final router = appRouter.router();
 
       // Act
       await pumpRouter(tester, router);
-      router.go(AppRouteNames.auth);
+      router.go(AppRouteNames.onBoarding);
       await tester.pumpAndSettle();
 
       // Assert
-      expect(find.byType(AuthScreen), findsOneWidget);
+      expect(find.byType(OnBoardingScreen), findsOneWidget);
     });
 
-    testWidgets('Should show [PageNotFound] when navigating to an invalid path',
+    testWidgets(
+        'Should show [PageNotFoundScreen] when navigating to an invalid path',
         (tester) async {
       // Arrange
       final router = appRouter.router();
@@ -75,7 +78,7 @@ void main() {
       await tester.pumpAndSettle();
 
       // Assert
-      expect(find.byType(PageNotFound), findsOneWidget);
+      expect(find.byType(PageNotFoundScreen), findsOneWidget);
     });
   });
 }

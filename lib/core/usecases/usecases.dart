@@ -1,6 +1,6 @@
 // ignore_for_file: one_member_abstracts
 
-import 'package:todo_manager/core/utils/type_defs.dart';
+import 'package:book_lover/core/utils/type_defs.dart';
 
 /// every usecase follows this pattern
 ///

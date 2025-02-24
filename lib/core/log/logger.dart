@@ -1,6 +1,6 @@
+import 'package:book_lover/core/di/di.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
-import 'package:todo_manager/core/di/di.dart';
 
 @singleton
 class AppLogger {

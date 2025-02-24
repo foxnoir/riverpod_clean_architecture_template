@@ -1,4 +1,4 @@
-package com.example.todo_manager
+package com.example.book_lover
 
 import io.flutter.embedding.android.FlutterActivity
 

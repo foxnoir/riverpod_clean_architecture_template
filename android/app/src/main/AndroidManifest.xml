@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="todo_manager"
+        android:label="book_lover"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

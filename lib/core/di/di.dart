@@ -1,6 +1,6 @@
+import 'package:book_lover/core/di/di.config.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
-import 'package:todo_manager/core/di/di.config.dart';
 
 // Method used to initialized the dependency injection. Called in main.
 @InjectableInit(ignoreUnregisteredTypes: [])

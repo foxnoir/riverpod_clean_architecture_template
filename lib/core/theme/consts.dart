@@ -20,11 +20,10 @@ class AppColor {
   static const Color boxGrey = Color(0xFF9E9E9E);
   static const Color error = Color(0xFF771305);
 
-  static const Color darkPurple = Color(0xFF473678);
-  static const Color lightPurple = Color(0xFFB385D7);
-  static const Color lightTurquoise = Color(0xFF64C0B5);
-  static const Color turquoise = Color(0xFF64C0B5);
-  static const Color darkTurquoise = Color(0xFF1E464C);
+  static const Color darkGreen = Color(0xFF70887A);
+  static const Color lightGreen = Color(0xFFA6b69C);
+  static const Color darkRose = Color(0xFFD99F8E);
+  static const Color lightRose = Color(0xFFF1B79A);
 }
 
 class AppFont {

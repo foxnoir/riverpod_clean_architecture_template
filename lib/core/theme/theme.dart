@@ -1,5 +1,5 @@
+import 'package:book_lover/core/theme/consts.dart';
 import 'package:flutter/material.dart';
-import 'package:todo_manager/core/theme/consts.dart';
 
 ThemeData getLightTheme() {
   return _buildTheme(_getColorScheme(Brightness.light));
@@ -92,8 +92,8 @@ ThemeData _buildTheme(ColorScheme colorScheme) {
 
 ColorScheme _getColorScheme(Brightness brightness) {
   return const ColorScheme.light(
-    primary: AppColor.darkPurple,
-    secondary: AppColor.lightTurquoise,
+    primary: AppColor.darkRose,
+    secondary: AppColor.darkGreen,
     tertiary: AppColor.darkGrey,
     error: AppColor.error,
     onSurface: AppColor.grey,
