@@ -2,10 +2,10 @@ import 'dart:convert';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:mocktail/mocktail.dart';
-import 'package:riverpod_app/core/errors/exceptions.dart';
-import 'package:riverpod_app/core/network/api_config.dart';
-import 'package:riverpod_app/features/auth/data/data_sources/auth_remote_data_source.dart';
-import 'package:riverpod_app/features/auth/data/models/user_model.dart';
+import 'package:todo_manager/core/errors/exceptions.dart';
+import 'package:todo_manager/core/network/api_config.dart';
+import 'package:todo_manager/features/auth/data/data_sources/auth_remote_data_source.dart';
+import 'package:todo_manager/features/auth/data/models/user_model.dart';
 
 import '../../../fixtures/fixture_reader.dart';
 import '../../../test_helpers/test_response_messages.dart';

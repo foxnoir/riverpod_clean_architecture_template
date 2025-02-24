@@ -1,8 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
-import 'package:riverpod_app/core/usecases/usecases.dart';
-import 'package:riverpod_app/core/utils/type_defs.dart';
-import 'package:riverpod_app/features/auth/domain/repositories/auth_repository.dart';
+import 'package:todo_manager/core/usecases/usecases.dart';
+import 'package:todo_manager/core/utils/type_defs.dart';
+import 'package:todo_manager/features/auth/domain/repositories/auth_repository.dart';
 
 /// depends on the repo and will call the repo's createUser method
 

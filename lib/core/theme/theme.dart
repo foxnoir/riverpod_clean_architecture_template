@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:riverpod_app/core/theme/consts.dart';
+import 'package:todo_manager/core/theme/consts.dart';
 
 ThemeData getLightTheme() {
   return _buildTheme(_getColorScheme(Brightness.light));

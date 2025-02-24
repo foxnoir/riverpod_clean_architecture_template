@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:riverpod_app/core/errors/exceptions.dart';
+import 'package:todo_manager/core/errors/exceptions.dart';
 
 abstract class Failure extends Equatable {
   Failure({required this.message, required this.statusCode})

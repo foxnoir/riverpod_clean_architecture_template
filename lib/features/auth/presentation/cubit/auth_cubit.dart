@@ -1,9 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
-import 'package:riverpod_app/features/auth/domain/entities/user.dart';
-import 'package:riverpod_app/features/auth/domain/usecases/create_user.dart';
-import 'package:riverpod_app/features/auth/domain/usecases/get_users.dart';
+import 'package:todo_manager/features/auth/domain/entities/user.dart';
+import 'package:todo_manager/features/auth/domain/usecases/create_user.dart';
+import 'package:todo_manager/features/auth/domain/usecases/get_users.dart';
 
 part 'auth_state.dart';
 

@@ -1,11 +1,11 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:mocktail/mocktail.dart';
-import 'package:riverpod_app/features/auth/data/data_sources/auth_remote_data_source.dart';
-import 'package:riverpod_app/features/auth/domain/repositories/auth_repository.dart';
-import 'package:riverpod_app/features/auth/domain/usecases/create_user.dart';
-import 'package:riverpod_app/features/auth/domain/usecases/get_users.dart';
-import 'package:riverpod_app/features/auth/presentation/cubit/auth_cubit.dart';
+import 'package:todo_manager/features/auth/data/data_sources/auth_remote_data_source.dart';
+import 'package:todo_manager/features/auth/domain/repositories/auth_repository.dart';
+import 'package:todo_manager/features/auth/domain/usecases/create_user.dart';
+import 'package:todo_manager/features/auth/domain/usecases/get_users.dart';
+import 'package:todo_manager/features/auth/presentation/cubit/auth_cubit.dart';
 
 /// mock only dependencies, not classes you wanna test
 

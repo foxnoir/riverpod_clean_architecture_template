@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:riverpod_app/core/router/app_router_names.dart';
-import 'package:riverpod_app/core/router/page_not_found.dart';
-import 'package:riverpod_app/core/router/transiton_page.dart';
-import 'package:riverpod_app/features/auth/presentation/views/auth_screen.dart';
+import 'package:todo_manager/core/router/app_router_names.dart';
+import 'package:todo_manager/core/router/page_not_found.dart';
+import 'package:todo_manager/core/router/transiton_page.dart';
+import 'package:todo_manager/features/auth/presentation/views/auth_screen.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 

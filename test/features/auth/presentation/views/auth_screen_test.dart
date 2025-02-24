@@ -4,12 +4,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:riverpod_app/core/extensions/localization_extensions.dart';
-import 'package:riverpod_app/features/auth/data/models/user_model.dart';
-import 'package:riverpod_app/features/auth/presentation/cubit/auth_cubit.dart';
-import 'package:riverpod_app/features/auth/presentation/views/auth_screen.dart';
-import 'package:riverpod_app/features/auth/presentation/widgets/auth_add_user_dialog.dart';
-import 'package:riverpod_app/global_widgets/app_loading_column.dart';
+import 'package:todo_manager/core/extensions/localization_extensions.dart';
+import 'package:todo_manager/features/auth/data/models/user_model.dart';
+import 'package:todo_manager/features/auth/presentation/cubit/auth_cubit.dart';
+import 'package:todo_manager/features/auth/presentation/views/auth_screen.dart';
+import 'package:todo_manager/features/auth/presentation/widgets/auth_add_user_dialog.dart';
+import 'package:todo_manager/global_widgets/app_loading_column.dart';
 
 import '../../../../test_helpers/localization_mock.dart';
 import '../../../../test_helpers/mocks.mock.dart';

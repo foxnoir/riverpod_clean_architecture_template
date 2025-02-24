@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:riverpod_app/core/di/di.dart';
-import 'package:riverpod_app/core/extensions/localization_extensions.dart';
-import 'package:riverpod_app/features/auth/presentation/cubit/auth_cubit.dart';
-import 'package:riverpod_app/features/auth/presentation/widgets/auth_add_user_dialog.dart';
-import 'package:riverpod_app/features/auth/presentation/widgets/auth_user_list.dart';
-import 'package:riverpod_app/global_widgets/app_loading_column.dart';
+import 'package:todo_manager/core/di/di.dart';
+import 'package:todo_manager/core/extensions/localization_extensions.dart';
+import 'package:todo_manager/features/auth/presentation/cubit/auth_cubit.dart';
+import 'package:todo_manager/features/auth/presentation/widgets/auth_add_user_dialog.dart';
+import 'package:todo_manager/features/auth/presentation/widgets/auth_user_list.dart';
+import 'package:todo_manager/global_widgets/app_loading_column.dart';
 
 class AuthScreen extends StatelessWidget {
   const AuthScreen({

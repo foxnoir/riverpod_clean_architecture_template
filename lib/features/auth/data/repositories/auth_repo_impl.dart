@@ -1,11 +1,11 @@
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
-import 'package:riverpod_app/core/errors/exceptions.dart';
-import 'package:riverpod_app/core/errors/failures.dart';
-import 'package:riverpod_app/core/utils/type_defs.dart';
-import 'package:riverpod_app/features/auth/data/data_sources/auth_remote_data_source.dart';
-import 'package:riverpod_app/features/auth/domain/entities/user.dart';
-import 'package:riverpod_app/features/auth/domain/repositories/auth_repository.dart';
+import 'package:todo_manager/core/errors/exceptions.dart';
+import 'package:todo_manager/core/errors/failures.dart';
+import 'package:todo_manager/core/utils/type_defs.dart';
+import 'package:todo_manager/features/auth/data/data_sources/auth_remote_data_source.dart';
+import 'package:todo_manager/features/auth/domain/entities/user.dart';
+import 'package:todo_manager/features/auth/domain/repositories/auth_repository.dart';
 
 /// talks to datasource
 /// gets result/exception returns result/failure

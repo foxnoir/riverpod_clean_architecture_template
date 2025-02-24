@@ -2,9 +2,9 @@ import 'dart:convert';
 
 import 'package:dart_mappable/dart_mappable.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:riverpod_app/core/utils/type_defs.dart';
-import 'package:riverpod_app/features/auth/data/models/user_model.dart';
-import 'package:riverpod_app/features/auth/domain/entities/user.dart';
+import 'package:todo_manager/core/utils/type_defs.dart';
+import 'package:todo_manager/features/auth/data/models/user_model.dart';
+import 'package:todo_manager/features/auth/domain/entities/user.dart';
 
 import '../../../../../fixtures/fixture_reader.dart';
 

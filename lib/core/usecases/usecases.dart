@@ -1,6 +1,6 @@
 // ignore_for_file: one_member_abstracts
 
-import 'package:riverpod_app/core/utils/type_defs.dart';
+import 'package:todo_manager/core/utils/type_defs.dart';
 
 /// every usecase follows this pattern
 ///

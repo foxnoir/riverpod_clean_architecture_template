@@ -3,10 +3,10 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:injectable/injectable.dart';
-import 'package:riverpod_app/core/di/di.dart';
-import 'package:riverpod_app/core/log/logger.dart';
-import 'package:riverpod_app/core/router/app_router.dart';
-import 'package:riverpod_app/core/theme/theme.dart';
+import 'package:todo_manager/core/di/di.dart';
+import 'package:todo_manager/core/log/logger.dart';
+import 'package:todo_manager/core/router/app_router.dart';
+import 'package:todo_manager/core/theme/theme.dart';
 
 Future<void> main() async {
   await runZonedGuarded(() async {

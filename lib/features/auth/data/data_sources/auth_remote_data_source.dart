@@ -2,10 +2,10 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
-import 'package:riverpod_app/core/errors/exceptions.dart';
-import 'package:riverpod_app/core/network/api_config.dart';
-import 'package:riverpod_app/core/utils/type_defs.dart';
-import 'package:riverpod_app/features/auth/data/models/user_model.dart';
+import 'package:todo_manager/core/errors/exceptions.dart';
+import 'package:todo_manager/core/network/api_config.dart';
+import 'package:todo_manager/core/utils/type_defs.dart';
+import 'package:todo_manager/features/auth/data/models/user_model.dart';
 
 /// talks to server
 /// catchs exception

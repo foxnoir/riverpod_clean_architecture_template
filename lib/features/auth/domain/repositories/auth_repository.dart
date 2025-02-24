@@ -1,5 +1,5 @@
-import 'package:riverpod_app/core/utils/type_defs.dart';
-import 'package:riverpod_app/features/auth/domain/entities/user.dart';
+import 'package:todo_manager/core/utils/type_defs.dart';
+import 'package:todo_manager/features/auth/domain/entities/user.dart';
 
 /// Interface / contract what functions the feature has (not implementing
 /// Domain layer is not directly dealing with Exceptions (clean architecture)

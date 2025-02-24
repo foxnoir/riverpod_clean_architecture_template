@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:riverpod_app/core/errors/failures.dart';
+import 'package:todo_manager/core/errors/failures.dart';
 
 /// short generetic name for types
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:riverpod_app/features/auth/presentation/cubit/auth_cubit.dart';
+import 'package:todo_manager/features/auth/presentation/cubit/auth_cubit.dart';
 
 class AuthUserList extends StatelessWidget {
   const AuthUserList({super.key});
