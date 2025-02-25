@@ -14,18 +14,19 @@ class AppRouter {
     debugLogDiagnostics: true,
     routes: [
       GoRoute(
-        path: AppRouteNames.onBoarding,
-        name: AppRouteNames.onBoarding,
-        builder: (context, state) => const OnBoardingScreen(),
-      ),
-      GoRoute(
-        path: AppRouteNames.signUp,
-        name: AppRouteNames.signUp,
-        pageBuilder: (context, state) => SlideTransitionPage(
-          key: state.pageKey,
-          child: const SignUpScreen(),
-        ),
-      ),
+          path: AppRouteNames.onBoarding,
+          name: AppRouteNames.onBoarding,
+          builder: (context, state) => const OnBoardingScreen(),
+          routes: [
+            GoRoute(
+              path: AppRouteNames.signUp,
+              name: AppRouteNames.signUp,
+              pageBuilder: (context, state) => SlideTransitionPage(
+                key: state.pageKey,
+                child: const SignUpScreen(),
+              ),
+            ),
+          ]),
     ],
     errorPageBuilder: (context, state) => const MaterialPage(
       child: PageNotFoundScreen(),

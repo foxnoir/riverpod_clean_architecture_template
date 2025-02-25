@@ -10,6 +10,5 @@ class TestDI {
 
 @InjectableInit(generateForDir: ['test', 'lib'])
 Future<void> configureTestInjection() async {
-  TestDI.getIt.registerSingleton<bool>(true, instanceName: 'isRouteTesting');
   await TestDI.getIt.init(environment: Environment.test);
 }

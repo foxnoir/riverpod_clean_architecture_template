@@ -10,7 +10,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../test_helpers/mocks_init.dart';
-import '../di/di_test.dart';
+import '../di/test_di.dart';
 
 void main() {
   late AppRouter appRouter;

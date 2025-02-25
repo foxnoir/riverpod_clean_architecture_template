@@ -6,7 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../core/di/di_test.dart';
+import '../../../../core/di/test_di.dart';
 import '../../../../test_helpers/localization_mock.dart';
 import '../../../../test_helpers/mocks_init.dart';
 

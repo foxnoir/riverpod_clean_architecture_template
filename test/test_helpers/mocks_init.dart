@@ -3,7 +3,7 @@
 import 'package:book_dragon/core/di/di.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../core/di/di_test.dart';
+import '../core/di/test_di.dart';
 
 class TestSettings {
   static Future<void> init() async {
