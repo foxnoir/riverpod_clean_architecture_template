@@ -1,9 +1,9 @@
 import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart';
-import 'package:injectable/injectable.dart';
 import 'package:book_dragon/features/auth/domain/entities/user.dart';
 import 'package:book_dragon/features/auth/domain/usecases/create_user.dart';
 import 'package:book_dragon/features/auth/domain/usecases/get_users.dart';
+import 'package:equatable/equatable.dart';
+import 'package:injectable/injectable.dart';
 
 part 'auth_state.dart';
 

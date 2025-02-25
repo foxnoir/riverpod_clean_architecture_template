@@ -10,31 +10,35 @@ class OnBoardingBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(top: 80, bottom: 20),
-          child: Image.asset(content.image, height: 310.w),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(25).copyWith(bottom: 0),
-          child: Column(
-            children: [
-              Text(
-                content.title,
-                textAlign: TextAlign.center,
-                style: context.theme.textTheme.headlineLarge,
-              ),
-              SizedBox(height: 20.h),
-              Text(
-                content.description,
-                textAlign: TextAlign.center,
-                style: context.theme.textTheme.headlineMedium,
-              ),
-            ],
+    return SingleChildScrollView(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(top: 80, bottom: 20),
+            child: Image.asset(content.image, height: 310.w),
           ),
-        ),
-      ],
+          Padding(
+            padding: const EdgeInsets.all(25).copyWith(bottom: 0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  content.title,
+                  textAlign: TextAlign.center,
+                  style: context.theme.textTheme.headlineLarge,
+                ),
+                SizedBox(height: 20.h),
+                Text(
+                  content.description,
+                  textAlign: TextAlign.center,
+                  style: context.theme.textTheme.headlineMedium,
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

@@ -8,33 +8,29 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PageNotFoundScreen extends StatelessWidget {
   const PageNotFoundScreen({
-    required this.isRouteTesting,
     super.key,
   });
-  final bool isRouteTesting;
 
   @override
   Widget build(BuildContext context) {
-    return isRouteTesting
-        ? Container()
-        : Scaffold(
-            appBar: AppBar(
-              title: Text(AppLocalizations.of(context).pageNotFoundTitle),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(AppLocalizations.of(context).pageNotFoundTitle),
+      ),
+      body: Stack(
+        children: [
+          const AppImgContainer(image: AppImg.notFound),
+          Center(
+            child: Padding(
+              padding: EdgeInsets.only(top: 410.w),
+              child: AppElevatedButton(
+                btnText: AppLocalizations.of(context).goToHomepage,
+                onPressed: () {},
+              ),
             ),
-            body: Stack(
-              children: [
-                const AppImgContainer(image: AppImg.notFound),
-                Center(
-                  child: Padding(
-                    padding: EdgeInsets.only(top: 410.w),
-                    child: AppElevatedButton(
-                      btnText: AppLocalizations.of(context).goToHomepage,
-                      onPressed: () {},
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          );
+          ),
+        ],
+      ),
+    );
   }
 }

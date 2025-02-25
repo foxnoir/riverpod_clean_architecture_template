@@ -1,11 +1,11 @@
 import 'dart:convert';
 
-import 'package:http/http.dart' as http;
-import 'package:injectable/injectable.dart';
 import 'package:book_dragon/core/errors/exceptions.dart';
 import 'package:book_dragon/core/network/api_config.dart';
 import 'package:book_dragon/core/utils/type_defs.dart';
 import 'package:book_dragon/features/auth/data/models/user_model.dart';
+import 'package:http/http.dart' as http;
+import 'package:injectable/injectable.dart';
 
 /// talks to server
 /// catchs exception

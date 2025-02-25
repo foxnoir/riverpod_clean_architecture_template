@@ -1,6 +1,6 @@
+import 'package:book_dragon/features/auth/domain/entities/user.dart';
 import 'package:dart_mappable/dart_mappable.dart';
 import 'package:equatable/equatable.dart';
-import 'package:book_dragon/features/auth/domain/entities/user.dart';
 
 part 'user_model.mapper.dart';
 

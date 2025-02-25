@@ -1,11 +1,11 @@
-import 'package:dartz/dartz.dart';
-import 'package:injectable/injectable.dart';
 import 'package:book_dragon/core/errors/exceptions.dart';
 import 'package:book_dragon/core/errors/failures.dart';
 import 'package:book_dragon/core/utils/type_defs.dart';
 import 'package:book_dragon/features/auth/data/data_sources/auth_remote_data_source.dart';
 import 'package:book_dragon/features/auth/domain/entities/user.dart';
 import 'package:book_dragon/features/auth/domain/repositories/auth_repository.dart';
+import 'package:dartz/dartz.dart';
+import 'package:injectable/injectable.dart';
 
 /// talks to datasource
 /// gets result/exception returns result/failure

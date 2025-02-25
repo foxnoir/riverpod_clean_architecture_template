@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:book_dragon/core/di/di.dart';
 import 'package:book_dragon/core/log/logger.dart';
 import 'package:book_dragon/core/router/app_router.dart';
@@ -12,7 +11,6 @@ import 'package:injectable/injectable.dart';
 Future<void> main() async {
   await runZonedGuarded(() async {
     WidgetsFlutterBinding.ensureInitialized();
-
     await _loadApp();
   }, (Object error, StackTrace stack) {
     logger.info('zone error $error');
@@ -22,7 +20,7 @@ Future<void> main() async {
 Future<void> _loadApp() async {
   try {
     await DI.getIt.reset();
-    DI.getIt.registerSingleton<bool>(false);
+
     await configureInjection(Environment.dev);
     runApp(BookDragon());
   } catch (ex, st) {
@@ -38,6 +36,8 @@ class BookDragon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appRouter = DI.getIt<AppRouter>().router;
+
     return ScreenUtilInit(
       designSize: const Size(375, 812),
       builder: (context, child) => MaterialApp.router(
@@ -48,9 +48,7 @@ class BookDragon extends StatelessWidget {
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
         localeResolutionCallback: (locale, supportedLocales) {
-          if (locale == null) {
-            return const Locale('en', '');
-          }
+          if (locale == null) return const Locale('en', '');
           for (final supportedLocale in supportedLocales) {
             if (supportedLocale.languageCode == locale.languageCode) {
               return supportedLocale;
@@ -58,8 +56,6 @@ class BookDragon extends StatelessWidget {
           }
           return const Locale('en', '');
         },
-        // TODO(locale-handling): write better clear logic
-        /// locale: DI.getIt<SettingsRepository>().locale,
         theme: getLightTheme(),
       ),
     );

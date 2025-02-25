@@ -1,84 +1,74 @@
-// Unit Test file for app_router.dartimport 'package:flutter/material.dart';
 import 'package:book_dragon/core/router/app_router.dart';
 import 'package:book_dragon/core/router/app_router_names.dart';
 import 'package:book_dragon/core/router/page_not_found_screen.dart';
+import 'package:book_dragon/features/auth/presentation/views/sign_up_screen.dart';
 import 'package:book_dragon/features/on_boarding/presentation/views/on_boarding_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
+
+import '../../test_helpers/mocks_init.dart';
+import '../di/di_test.dart';
 
 void main() {
   late AppRouter appRouter;
 
-  setUp(() {
-    appRouter = AppRouter(isRouteTesting: true);
+  setUp(() async {
+    await TestSettings.init();
+    appRouter = TestDI.getIt<AppRouter>();
   });
 
   Future<void> pumpRouter(WidgetTester tester, GoRouter router) async {
     await tester.pumpWidget(
-      MaterialApp.router(
-        routerDelegate: router.routerDelegate,
-        routeInformationParser: router.routeInformationParser,
-        routeInformationProvider: router.routeInformationProvider,
+      ScreenUtilInit(
+        designSize: const Size(375, 812),
+        builder: (context, child) => MaterialApp.router(
+          routerDelegate: router.routerDelegate,
+          routeInformationParser: router.routeInformationParser,
+          routeInformationProvider: router.routeInformationProvider,
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
+        ),
       ),
     );
   }
 
   group('AppRouter Tests', () {
-    testWidgets('navigates to [OnBoardingScreen] for initial route',
+    testWidgets('Navigiert zu [OnBoardingScreen] für initiale Route',
         (tester) async {
-      // Arrange
-      final router = appRouter.router();
-
-      // Act
+      final router = appRouter.router;
       await pumpRouter(tester, router);
       await tester.pumpAndSettle();
-
-      // Assert
       expect(find.byType(OnBoardingScreen), findsOneWidget);
     });
 
-    testWidgets('Should show [OnBoardingScreen] when route is [/onBoarding]',
+    testWidgets('Zeigt [OnBoardingScreen] wenn Route [/onBoarding] ist',
         (tester) async {
-      // Arrange
-      final router = appRouter.router('/onBoarding');
-
-      // Act
-      await pumpRouter(tester, router);
-      await tester.pumpAndSettle();
-
-      // Assert
-      expect(find.byType(OnBoardingScreen), findsOneWidget);
-    });
-
-    testWidgets(
-        'Should show [OnBoardingScreen] '
-        'when navigating to [AppRouteNames.onBoarding]', (tester) async {
-      // Arrange
-      final router = appRouter.router();
-
-      // Act
+      final router = appRouter.router;
       await pumpRouter(tester, router);
       router.go(AppRouteNames.onBoarding);
       await tester.pumpAndSettle();
-
-      // Assert
       expect(find.byType(OnBoardingScreen), findsOneWidget);
     });
 
-    testWidgets(
-        'Should show [PageNotFoundScreen] when navigating to an invalid path',
+    testWidgets('Zeigt [PageNotFoundScreen] für ungültige Route',
         (tester) async {
-      // Arrange
-      final router = appRouter.router();
-
-      // Act
+      final router = appRouter.router;
       await pumpRouter(tester, router);
       router.go('/invalid_path');
       await tester.pumpAndSettle();
-
-      // Assert
       expect(find.byType(PageNotFoundScreen), findsOneWidget);
+    });
+
+    testWidgets('Navigiert zu [SignUpScreen] von [OnBoardingScreen]',
+        (tester) async {
+      final router = appRouter.router;
+      await pumpRouter(tester, router);
+      router.go('${AppRouteNames.onBoarding}${AppRouteNames.signUp}');
+      await tester.pumpAndSettle();
+      expect(find.byType(SignUpScreen), findsOneWidget);
     });
   });
 }
