@@ -32,7 +32,7 @@ class OnBoardingBody extends StatelessWidget {
                 Text(
                   content.description,
                   textAlign: TextAlign.center,
-                  style: context.theme.textTheme.headlineMedium,
+                  style: context.theme.textTheme.headlineSmall,
                 ),
               ],
             ),

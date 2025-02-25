@@ -1,5 +1,5 @@
 import 'package:book_dragon/core/router/app_router.dart';
-import 'package:book_dragon/features/auth/presentation/views/sign_up_screen.dart';
+import 'package:book_dragon/features/auth/presentation/views/auth_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -32,7 +32,7 @@ void main() {
   }
 
   group('OnBoardingScreen Navigation Tests', () {
-    testWidgets('navigates to [SignUpScreen] when [Get Started] is pressed',
+    testWidgets('navigates to [AuthScreen] when [Get Started] is pressed',
         (tester) async {
       // Arrange
       final appLocalizations = await getLocalizations(tester);
@@ -49,7 +49,7 @@ void main() {
       await tester.pumpAndSettle();
 
       /// Assert
-      expect(find.byType(SignUpScreen), findsOneWidget);
+      expect(find.byType(AuthScreen), findsOneWidget);
     });
   });
 }

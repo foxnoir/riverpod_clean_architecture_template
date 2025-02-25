@@ -6,52 +6,46 @@ class AppElevatedButton extends StatelessWidget {
   const AppElevatedButton({
     required this.onPressed,
     required this.btnText,
+    this.isEnabled = true,
+    this.backgroundColor,
     super.key,
   });
 
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
   final String btnText;
+  final bool isEnabled;
+  final Color? backgroundColor;
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 210.w,
-      height: 44.w,
-      child: ElevatedButton(
-        onPressed: onPressed,
-        child: LayoutBuilder(
-          builder: (context, constraints) {
-            final textPainter = TextPainter(
-              text: TextSpan(
-                text: btnText,
-                style: DefaultTextStyle.of(context).style,
+    final theme = Theme.of(context);
+
+    return AbsorbPointer(
+      absorbing: !isEnabled,
+      child: SizedBox(
+        width: 210.w,
+        height: 44.w,
+        child: ElevatedButton(
+          onPressed: onPressed,
+          style: ElevatedButton.styleFrom(
+            backgroundColor: backgroundColor ??
+                theme.elevatedButtonTheme.style?.backgroundColor?.resolve({}),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                btnText,
+                textAlign: TextAlign.center,
               ),
-              maxLines: 1,
-              textDirection: TextDirection.ltr,
-            )..layout();
-
-            final textWidth = textPainter.width;
-
-            return Stack(
-              alignment: Alignment.center,
-              children: [
-                Align(
-                  child: Text(
-                    btnText,
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-                Positioned(
-                  left: textWidth / 2 + 93.w,
-                  child: Image.asset(
-                    AppImg.btnIcon,
-                    fit: BoxFit.cover,
-                    width: 20.w,
-                  ),
-                ),
-              ],
-            );
-          },
+              SizedBox(width: 8.w),
+              Image.asset(
+                AppImg.btnIcon,
+                fit: BoxFit.cover,
+                width: 20.w,
+              ),
+            ],
+          ),
         ),
       ),
     );

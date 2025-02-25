@@ -21,8 +21,6 @@ import 'package:book_dragon/features/auth/domain/usecases/create_user.dart'
     as _i623;
 import 'package:book_dragon/features/auth/domain/usecases/get_users.dart'
     as _i885;
-import 'package:book_dragon/features/auth/presentation/cubit/auth_cubit.dart'
-    as _i329;
 import 'package:book_dragon/features/on_boarding/data/data_sources/on_boarding_local_data_source.dart'
     as _i126;
 import 'package:book_dragon/features/on_boarding/data/repos/on_boarding_repo_impl.dart'
@@ -74,10 +72,6 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i623.CreateUser(gh<_i1060.AuthRepository>()));
     gh.lazySingleton<_i554.OnBoardingRepo>(
         () => _i974.OnBoardingRepoImpl(gh<_i126.OnBoardingLocalDataSource>()));
-    gh.factory<_i329.AuthCubit>(() => _i329.AuthCubit(
-          createUser: gh<_i623.CreateUser>(),
-          getUsers: gh<_i885.GetUsers>(),
-        ));
     gh.factory<_i796.CacheFirstTimer>(
         () => _i796.CacheFirstTimer(gh<_i554.OnBoardingRepo>()));
     gh.factory<_i765.CheckIfUserIsFirstTimer>(

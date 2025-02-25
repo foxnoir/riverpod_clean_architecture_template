@@ -7,6 +7,7 @@ class AppConst {
   static const double kActiveNavIconSize = 35;
   static const double kCardPadding = 16;
   static const double kCardIconSize = 15;
+  static const double kBorderRadius = 4;
 }
 
 class AppColor {
@@ -23,7 +24,8 @@ class AppColor {
   static const Color lightBrown = Color(0xFF935f46);
   static const Color darkYellow = Color(0xFFbf793d);
   static const Color lightYellow = Color(0xFFf6bd88);
-  static const Color green = Color(0xFF6D6A4B);
+  static const Color darkGreen = Color(0xFF6D6A4B);
+  static const Color lightGreen = Color(0xFFaaa27e);
   static const Color purple = Color(0xFF915d52);
   static const Color creme = Color(0xFFf8fdf9);
 }
@@ -42,31 +44,4 @@ class AppFontWeight {
   static const FontWeight medium = FontWeight.w500;
   static const FontWeight semiBold = FontWeight.w600;
   static const FontWeight bold = FontWeight.w700;
-}
-
-class AppFontSize {
-  const AppFontSize._();
-
-  static const double s11 = 11;
-  static const double s12 = 12;
-  static const double s14 = 14;
-
-  /// headline medium (starter subtext)
-  static const double s15 = 15;
-  static const double s17 = 17;
-  static const double s18 = 18;
-  static const double s19 = 19;
-  static const double s21 = 21;
-
-  /// headline large (starter headline)
-  static const double s30 = 30;
-
-  double scaleSize(BuildContext context, double size) {
-    /// Base screen width used in your design
-    /// use:
-    /// style: TextStyle(fontSize: scaleSize(context, 16)),
-    const baseWidth = 375.0;
-    final screenWidth = MediaQuery.of(context).size.width;
-    return size * (screenWidth / baseWidth);
-  }
 }

@@ -2,5 +2,5 @@ class AppRouteNames {
   const AppRouteNames._();
   static const String initialLocation = '/';
   static const String onBoarding = '/onBoarding';
-  static const String signUp = '/signUp';
+  static const String auth = '/auth';
 }

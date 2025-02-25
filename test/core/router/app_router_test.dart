@@ -1,7 +1,7 @@
 import 'package:book_dragon/core/router/app_router.dart';
 import 'package:book_dragon/core/router/app_router_names.dart';
 import 'package:book_dragon/core/router/page_not_found_screen.dart';
-import 'package:book_dragon/features/auth/presentation/views/sign_up_screen.dart';
+import 'package:book_dragon/features/auth/presentation/views/auth_screen.dart';
 import 'package:book_dragon/features/on_boarding/presentation/views/on_boarding_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -62,13 +62,13 @@ void main() {
       expect(find.byType(PageNotFoundScreen), findsOneWidget);
     });
 
-    testWidgets('Navigiert zu [SignUpScreen] von [OnBoardingScreen]',
+    testWidgets('Navigiert zu [AuthScreen] von [OnBoardingScreen]',
         (tester) async {
       final router = appRouter.router;
       await pumpRouter(tester, router);
-      router.go('${AppRouteNames.onBoarding}${AppRouteNames.signUp}');
+      router.go('${AppRouteNames.onBoarding}${AppRouteNames.auth}');
       await tester.pumpAndSettle();
-      expect(find.byType(SignUpScreen), findsOneWidget);
+      expect(find.byType(AuthScreen), findsOneWidget);
     });
   });
 }
