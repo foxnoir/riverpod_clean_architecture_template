@@ -1,6 +1,7 @@
 import 'package:book_dragon/core/router/app_router_names.dart';
 import 'package:book_dragon/core/router/page_not_found_screen.dart';
 import 'package:book_dragon/core/router/transiton_page.dart';
+import 'package:book_dragon/features/auth/presentation/views/auth_screen.dart';
 import 'package:book_dragon/features/on_boarding/presentation/views/on_boarding_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -34,6 +35,18 @@ class AppRouter {
                 name: AppRouteNames.onBoarding,
                 builder: (context, state) =>
                     OnBoardingScreen(isRouteTesting: isRouteTesting),
+                routes: [
+                  GoRoute(
+                    path: AppRouteNames.auth,
+                    name: AppRouteNames.auth,
+                    pageBuilder: (context, state) => SlideTransitionPage(
+                      key: state.pageKey,
+                      child: AuthScreen(
+                        isRouteTesting: isRouteTesting,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),

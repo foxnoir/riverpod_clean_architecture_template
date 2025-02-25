@@ -93,7 +93,11 @@
         <li><a href="#testing-futurevoid-methods-in-dartflutter">Testing Future<void> Methods in Dart/Flutter</a></li>
      </ul>
     </li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a>
+      <ul>
+        <li><a href="#go-router">Go Router</a></li>
+     </ul>
+    </li>
   </ol>
 </details>
 
@@ -316,7 +320,7 @@ Write test for bloc_files.
 
 - [![Flutter][flutter]][flutter-url]
 - [![Dart][dart]][dart-url]
-- [![Mockapi][mockapi]][mockapi-url]
+- [![Firebase][firebase]][firebase-url]
 
 ### Most Important Packages and Tools used
 
@@ -325,6 +329,7 @@ Write test for bloc_files.
 [![Equatable][equatable]][equatable-url]
 [![Flutter Localizations][flutter-localizations]][flutter-localizations-url]
 [![GetIt][get-it]][get-it-url]
+[![GoRouter][gorouter]][gorouter-url]
 [![HTTP][http]][http-url]
 [![Injectable][injectable]][injectable-url]
 [![Intl][intl]][intl-url]
@@ -624,6 +629,127 @@ expect(
 
 ## **Acknowledgments**
 
+### [GoRouter](https://pub.dev/packages/go_router)
+
+`GoRouter` is a navigation package for Flutter that simplifies navigation and supports deep linking.
+GoRouter replaces Navigator.push() and Navigator.pop() with shorter and simpler methods.
+
+### GoRouter Navigation Methods 
+
+1. **go()**   
+
+Immediate Navigation (Replaces Current Route)
+`go()` navigates to a new page and removes the previous one from the stack.
+
+```dart
+context.go('/details'); // Navigates to the Details page
+```
+
+👉 Similar to `Navigator.pushReplacement()` in Flutter.
+
+2. **goNamed()**   
+
+Immediate Navigation Using Route Name
+`goNamed()` uses named routes instead of paths.
+Requires a named route in GoRouter.
+
+```dart
+final GoRouter _router = GoRouter(
+  routes: [
+    GoRoute(
+      path: '/',
+      name: 'home', // Assigning a name to the route
+      builder: (context, state) => HomeScreen(),
+    ),
+    GoRoute(
+      path: '/details',
+      name: 'details',
+      builder: (context, state) => DetailsScreen(),
+    ),
+  ],
+);
+
+context.goNamed('details'); // Navigation using the name
+```
+
+👉 Similar to `go()`, but uses route names instead of direct paths.
+
+3. **push()**   
+
+`push()` opens a new page on top of the current stack.
+The previous page remains in the stack (user can go back).
+
+```dart
+context.push('/details'); // Adds 'details' to the navigation stack
+```
+
+👉 Similar to Navigator.push() in Flutter.
+
+4. **pushNamed()**   
+Add a Named Route to the Stack
+`pushNamed` works like `push()`, but uses a route name instead of a path.
+
+```dart
+context.pushNamed('details'); // Adds the Details page to the stack
+```
+
+👉 Useful if the URL structure changes but the route name stays the same.
+
+5. **pop()**   
+Go Back to the Previous Page
+Closes the current page and returns to the previous one.
+
+```dart
+context.pop();
+```
+
+👉 Similar to Navigator.pop() in Flutter.
+
+6. **replace()**   
+Replace the Current Route Without Going Back
+Works like `go()`, but replaces the current page without animation.
+
+```dart
+context.replace('/newPage');
+```
+
+👉 Similar to Navigator.pushReplacement() in Flutter.
+
+### Summary
+
+#### <ins> Method Behavior </ins>
+
+- **`go('/path')`**  
+  Instantly navigates to a new page (replaces the previous one).
+
+- **`goNamed('routeName')`**  
+  Instantly navigates to a named route.
+
+- **`push('/path')`**  
+  Adds a new page on top of the stack (allows going back).
+
+- **`pushNamed('routeName')`**  
+  Adds a new named route on top of the stack.
+
+- **`pop()`**  
+  Goes back to the previous page.
+
+- **`replace('/path')`**  
+  Replaces the current route without allowing a back navigation.
+
+
+#### <ins> Conclusion </ins>
+
+✅ **`go() / goNamed()`** → Fast navigation, previous page is removed  
+✅ **`push() / pushNamed()`** → New page added to the stack, back navigation possible  
+✅ **`pop()`** → Goes back to the previous page  
+✅ **`replace()`** → Replaces the current page with no way to go back  
+
+
+<p align="right"><a href="#readme-top">back to top</a></p>
+
+---
+
 - [Riverpod](https://fnfidanci.medium.com/the-right-way-to-use-riverpod-in-flutter-77869f9b741c)
 - [clean architecture](https://dev.to/marwamejri/flutter-clean-architecture-1-an-overview-project-structure-4bhf)
 - [Dartz](https://medium.com/@samra.sajjad0001/exploring-the-purpose-and-usage-of-the-dartz-package-in-flutter-7902509939e9)
@@ -656,6 +782,8 @@ expect(
 [flutter-secure-storage-url]: https://pub.dev/packages/flutter_secure_storage
 [get-it]: https://img.shields.io/badge/GetIt-007ACC.svg?style=for-the-badge&logo=getit&logoColor=white
 [get-it-url]: https://pub.dev/packages/get_it
+[gorouter]: https://img.shields.io/badge/GoRouter-0082FC.svg?style=for-the-badge&logo=flutter&logoColor=white
+[gorouter-url]: https://pub.dev/packages/go_router
 [http]: https://img.shields.io/badge/HTTP-007BFF.svg?style=for-the-badge&logo=http&logoColor=white
 [http-url]: https://pub.dev/packages/http
 [hive]: https://img.shields.io/badge/Hive-FFB300.svg?style=for-the-badge&logo=hive&logoColor=white
@@ -683,6 +811,3 @@ expect(
 [very-good]: https://img.shields.io/badge/Very%20Good%20Analysis-B22C89.svg?style=for-the-badge&logo=verygood&logoColor=white
 [very-good-url]: https://pub.dev/packages/very_good_analysis
 
-```
-
-```

@@ -1,6 +1,7 @@
 import 'package:book_dragon/core/di/di.dart';
 import 'package:book_dragon/core/extensions/context_extensions.dart';
 import 'package:book_dragon/core/extensions/localization_extensions.dart';
+import 'package:book_dragon/core/router/app_router_names.dart';
 import 'package:book_dragon/core/theme/consts.dart';
 import 'package:book_dragon/core/theme/media_consts.dart';
 import 'package:book_dragon/features/on_boarding/domain/entities/on_boarding_content.dart';
@@ -11,6 +12,7 @@ import 'package:book_dragon/global_widgets/app_img_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:go_router/go_router.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnBoardingScreen extends StatelessWidget {
@@ -99,7 +101,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                 child: AppElevatedButton(
                   btnText: AppLocalizations.of(context).getStarted,
                   onPressed: () {
-                    // TODO(get-started-btn): go to auth
+                    context.pushNamed(AppRouteNames.auth);
                   },
                 ),
               ),
