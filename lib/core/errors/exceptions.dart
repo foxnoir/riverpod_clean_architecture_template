@@ -4,17 +4,19 @@ class ApiException extends Equatable implements Exception {
   const ApiException({required this.message, required this.statusCode});
 
   final String message;
-  final int statusCode;
+  final String statusCode;
 
   @override
   List<dynamic> get props => [message, statusCode];
 }
 
 class CacheException extends Equatable implements Exception {
-  const CacheException({required this.message, this.statusCode = 500});
+  const CacheException({required this.message, this.statusCode = '500'});
 
   final String message;
-  final int statusCode;
+
+  /// Firebase Exception statuscode are strings
+  final String statusCode;
 
   @override
   List<dynamic> get props => [message, statusCode];

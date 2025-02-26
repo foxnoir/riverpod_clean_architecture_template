@@ -1,11 +1,7 @@
-import 'dart:convert';
-
 import 'package:book_dragon/core/errors/exceptions.dart';
-import 'package:book_dragon/core/network/api_config.dart';
-import 'package:book_dragon/core/utils/type_defs.dart';
-import 'package:book_dragon/features/auth/data/models/user_model.dart';
-import 'package:http/http.dart' as http;
-import 'package:injectable/injectable.dart';
+import 'package:book_dragon/core/errors/firebase_exception_messages.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 
 /// talks to server
 /// catchs exception
@@ -18,73 +14,84 @@ import 'package:injectable/injectable.dart';
 /// this error is replaced by an ApiException
 /// statusCode 505 then indicates an unexpected error
 /// throw ApiException(message: e.toString(), statusCode: 505);
-
 abstract class AuthRemoteDataSource {
-  Future<void> createUser({
-    required String createdAt,
-    required String name,
-    required String avatar,
+  Future<void> sendOTP({
+    required String phoneNumber,
+    required void Function(PhoneAuthCredential) verificationCompleted,
+    required void Function(FirebaseAuthException) verificationFailed,
+    required void Function(String, int?) codeSent,
+    required void Function(String) codeAutoRetrievalTimeout,
   });
 
-  Future<List<UserModel>> getUsers();
+  Future<UserCredential> verifyOTP({
+    required String verificationId,
+    required String otp,
+  });
 }
 
-@LazySingleton(as: AuthRemoteDataSource)
 class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
-  const AuthRemoteDataSourceImpl(this._client);
-  final http.Client _client;
+  const AuthRemoteDataSourceImpl({
+    required FirebaseAuth authClient,
+  }) : _authClient = authClient;
+
+  final FirebaseAuth _authClient;
 
   @override
-  Future<void> createUser({
-    required String createdAt,
-    required String name,
-    required String avatar,
+  Future<void> sendOTP({
+    required String phoneNumber,
+    required void Function(PhoneAuthCredential) verificationCompleted,
+    required void Function(FirebaseAuthException) verificationFailed,
+    required void Function(String, int?) codeSent,
+    required void Function(String) codeAutoRetrievalTimeout,
   }) async {
     try {
-      final response = await _client.post(
-        Uri.https(ApiConfig.kBaseUrl, ApiConfig.users),
-        body: jsonEncode({
-          'createdAt': createdAt,
-          'name': name,
-          'avatar': avatar,
-        }),
-        headers: {'Content-Type': 'application/json'},
+      await _authClient.verifyPhoneNumber(
+        phoneNumber: phoneNumber,
+        verificationCompleted: (PhoneAuthCredential credential) {
+          verificationCompleted(credential);
+        },
+        verificationFailed: (FirebaseAuthException exception) {
+          verificationFailed(exception);
+        },
+        codeSent: (String verificationId, int? resendToken) {
+          codeSent(verificationId, resendToken);
+        },
+        codeAutoRetrievalTimeout: (String verificationId) {
+          codeAutoRetrievalTimeout(verificationId);
+        },
       );
-      if (response.statusCode != 200 && response.statusCode != 201) {
-        throw ApiException(
-          message: response.body,
-          statusCode: response.statusCode,
-        );
-      }
-    } on ApiException {
-      rethrow;
-    } catch (e) {
-      /// comment above
-      throw ApiException(message: e.toString(), statusCode: 505);
+    } on FirebaseAuthException catch (e) {
+      throw FirebaseAuthExceptionMapper.mapFirebaseException(e);
+    } catch (e, s) {
+      /// print links to where the error occured
+      debugPrintStack(stackTrace: s);
+      throw ApiException(
+        message: e.toString(),
+        statusCode: '505',
+      );
     }
   }
 
   @override
-  Future<List<UserModel>> getUsers() async {
+  Future<UserCredential> verifyOTP({
+    required String verificationId,
+    required String otp,
+  }) async {
     try {
-      final response = await _client.get(
-        Uri.https(ApiConfig.kBaseUrl, ApiConfig.users),
-        headers: {'Content-Type': 'application/json'},
+      final credential = PhoneAuthProvider.credential(
+        verificationId: verificationId,
+        smsCode: otp,
       );
-      if (response.statusCode != 200) {
-        throw ApiException(
-          message: response.body,
-          statusCode: response.statusCode,
-        );
-      }
-      return List<DataMap>.from(jsonDecode(response.body) as List)
-          .map(UserModelMapper.fromMap)
-          .toList();
-    } on ApiException {
-      rethrow;
-    } catch (e) {
-      /// comment above
-      throw ApiException(message: e.toString(), statusCode: 505);
+      return _authClient.signInWithCredential(credential);
+    } on FirebaseAuthException catch (e) {
+      throw FirebaseAuthExceptionMapper.mapFirebaseException(e);
+    } catch (e, s) {
+      /// print links to where the error occured
+      debugPrintStack(stackTrace: s);
+      throw ApiException(
+        message: e.toString(),
+        statusCode: '505',
+      );
     }
   }
 }

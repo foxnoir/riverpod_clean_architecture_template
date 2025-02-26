@@ -1,5 +1,5 @@
 import 'package:book_dragon/core/utils/type_defs.dart';
-import 'package:book_dragon/features/auth/domain/entities/user.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 /// Interface / contract what functions the feature has (not implementing
 /// Domain layer is not directly dealing with Exceptions (clean architecture)
@@ -10,11 +10,12 @@ import 'package:book_dragon/features/auth/domain/entities/user.dart';
 abstract class AuthRepository {
   const AuthRepository();
 
-  ResultFutureVoid createUser({
-    required String avatar,
-    required String createdAt,
-    required String name,
+  ResultFutureVoid sendOTP({
+    required String phoneNumber,
   });
 
-  ResultFuture<List<User>> getUsers();
+  ResultFuture<UserCredential> verifyOTP({
+    required String verificationId,
+    required String otp,
+  });
 }
