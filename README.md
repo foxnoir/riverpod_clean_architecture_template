@@ -3,7 +3,7 @@
 <!-- Top Links Bar -->
 
 [![LinkedIn][linkedin-shield]][linkedin-url]
-[![Twitter][twitter-shield]][twitter-url]
+[![X][x-shield]][x-url]
 [![Instagram][instagram-shield]][instagram-url]
 
 <!-- PROJECT LOGO -->
@@ -36,6 +36,18 @@
       </ul>
       <ul>
         <li><a href="#presentation-layer">Presentation Layer</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#riverpod">Riverpod</a>
+      <ul>
+        <li><a href="#why-riverpod-instead-of-provider">Why Riverpod instead of Provider</a></li>
+      </ul>
+      <ul>
+        <li><a href="#core-riverpod-provider">Core Riverpod Provider</a></li>
+      </ul>
+      <ul>
+        <li><a href="#conclusion">Conclusion</a></li>
       </ul>
     </li>
     <li>
@@ -254,12 +266,13 @@ First Happy Cases, then try/catch (error handling).
 
 If you were to use 2 different status management solutions at the same time, you would have another folder `app` in here. Here we only work with [Riverpod](https://fnfidanci.medium.com/the-right-way-to-use-riverpod-in-flutter-77869f9b741c).
 
+
 #### 1. <ins>State Managment here with: [Riverpod](https://pub.dev/packages/flutter_riverpod)</ins>
 
 `Riverpod`depends on `usecases`.
 
-Implement bloc_files.
-Write test for bloc_files.
+Implement riverpod_files.
+Write test for riverpod_files.
 
 <p align="right"><a href="#readme-top">back to top</a></p>
 
@@ -269,11 +282,79 @@ Write test for bloc_files.
 
 ---
 
+## [Riverpod](https://pub.dev/packages/riverpod)
+
+Riverpod is a powerful **state management framework** for Flutter that improves upon Provider. It offers **safe, testable, and flexible** dependency management while avoiding common issues like accessing deleted objects or requiring `BuildContext`.
+
+### Why Riverpod instead of Provider
+
+-   **Safe dependency management**: Prevents accessing disposed objects.
+-   **Better performance**: Optimized updates and memory handling.
+-   **No `BuildContext` required**: Providers are independent of the widget tree.
+-   **Global and local state management**: With minimal boilerplate.
+-   **Supports asynchronous state**: Easy integration of `FutureProvider` and `StreamProvider`.
+
+### Core Riverpod Provider
+
+#### **1. Provider (Read-only computed value)**
+
+```dart
+final helloProvider = Provider((ref) => "Hello, Riverpod!");
+```
+
+#### **2 StateProvider (Mutable state with `.state`)**
+
+```dart
+final counterProvider = StateProvider<int>((ref) => 0);
+```
+
+#### **3 FutureProvider (Asynchronous data)**
+
+```dart
+final userNameProvider = FutureProvider<String>((ref) async {
+  await Future.delayed(Duration(seconds: 2));
+  return "John Doe";
+});
+```
+
+#### **4 StreamProvider (Continuous data stream)**
+
+```dart
+final timeProvider = StreamProvider<DateTime>((ref) async* {
+  while (true) {
+    await Future.delayed(Duration(seconds: 1));
+    yield DateTime.now();
+  }
+});
+```
+
+#### **5. StateNotifierProvider (Complex state with methods)**
+
+```dart
+class CounterNotifier extends StateNotifier<int> {
+  CounterNotifier() : super(0);
+  void increment() => state++;
+}
+
+final counterNotifierProvider = StateNotifierProvider<CounterNotifier, int>(
+  (ref) => CounterNotifier(),
+);
+```
+
+### Conclusion
+
+Riverpod is an **efficient**, **safe**, and **testable** way to manage state in Flutter applications.\
+With **various providers**, it covers **simple**, **asynchronous**, and **complex** state management needs, making it a great choice for both small and large projects.
+
+<p align="right"><a href="#readme-top">back to top</a></p>
+
+---
+
 ## Style Guide
 
 ### Color Palette
 
-[Image comming soon]
+<img src="images/colorPalette.png" alt="icons" width="65%" height="100%">
 
 <p align="right"><a href="#readme-top">back to top</a></p>
 
@@ -824,3 +905,5 @@ context.replace('/newPage');
 [twitter-url]: https://twitter.com/_foxnoir_?lang=de
 [very-good]: https://img.shields.io/badge/Very%20Good%20Analysis-B22C89.svg?style=for-the-badge&logo=verygood&logoColor=white
 [very-good-url]: https://pub.dev/packages/very_good_analysis
+[x-shield]: https://img.shields.io/badge/-%23000000.svg?style=for-the-badge&logo=x&logoColor=white
+[x-url]: https://twitter.com/_foxnoir_?lang=de
