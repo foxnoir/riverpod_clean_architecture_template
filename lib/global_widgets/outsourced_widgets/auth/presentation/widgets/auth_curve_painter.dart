@@ -9,7 +9,7 @@ class AuthCurvePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = AppColor.lightYellow.withAlpha((0.5 * 255).toInt())
+      ..color = AppColor.lightYellow.withAlpha((0.4 * 255).toInt())
       ..style = PaintingStyle.fill;
 
     final path = Path()

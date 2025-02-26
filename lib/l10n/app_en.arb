@@ -48,7 +48,7 @@
   "@username": {},
   "rememberMe": "Remember Me",
   "@rememberMe": {},
-  "signInFailed": "SignIn failed",
+  "signInFailed": "Sign In failed",
   "@signInFailed": {},
   "invalidCredentials": "Invalid credentials",
   "@invalidCredentials": {},
@@ -71,5 +71,13 @@
   "orAuthWith": "Or auth with",
   "@orAuthWith": {},
   "or": "OR",
-  "@or": {}
+  "@or": {},
+  "enterNumberForCode": "Please enter your number to get the verification code.",
+  "@enterNumberForCode": {},
+  "search": "Search",
+  "@search": {},
+  "pickYourCode": "Pick your code",
+  "@pickYourCode": {},
+  "sendCode": "Send Code",
+  "@sendCode": {}
 }

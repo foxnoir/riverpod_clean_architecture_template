@@ -22,6 +22,9 @@ class _AuthScreenState extends State<AuthScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(AppLocalizations.of(context).authentication),
+      ),
       body: AppImgContainer(
         image: AppImg.startBg,
         child: SingleChildScrollView(

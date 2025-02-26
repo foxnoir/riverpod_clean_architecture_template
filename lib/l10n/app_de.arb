@@ -71,5 +71,13 @@
   "orAuthWith": "Oder anmelden mit",
   "@orAuthWith": {},
   "or": "ODER",
-  "@or": {}
+  "@or": {},
+  "enterNumberForCode": "Bitte geben Sie Ihre Nummer ein, um den Bestätigungscode zu erhalten.",
+  "@enterNumberForCode": {},
+  "search": "Suche",
+  "@search": {},
+  "pickYourCode": "Wählen Sie Ihren Code",
+  "@pickYourCode": {},
+  "sendCode": "Code senden",
+  "@sendCode": {}
 }

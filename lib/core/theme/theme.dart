@@ -24,16 +24,22 @@ ThemeData _buildTheme(ColorScheme colorScheme) {
       fontWeight: AppFontWeight.medium,
       color: AppColor.darkYellow,
     ),
+    labelLarge: TextStyle(
+      fontSize: 16.sp,
+      fontWeight: AppFontWeight.bold,
+      color: colorScheme.onPrimary,
+    ),
+    labelMedium: TextStyle(
+      fontSize: 14.sp,
+      fontWeight: AppFontWeight.bold,
+      color: AppColor.creme,
+    ),
     labelSmall: TextStyle(
       fontSize: 12.sp,
       fontWeight: AppFontWeight.medium,
       color: colorScheme.tertiary,
     ),
-    labelMedium: TextStyle(
-      fontSize: 16.sp,
-      fontWeight: AppFontWeight.bold,
-      color: colorScheme.onPrimary,
-    ),
+
     bodyMedium: TextStyle(
       fontSize: 14.sp,
       fontWeight: AppFontWeight.medium,

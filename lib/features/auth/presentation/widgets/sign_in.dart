@@ -1,18 +1,27 @@
+import 'package:book_dragon/core/di/di.dart';
 import 'package:book_dragon/core/extensions/context_extensions.dart';
 import 'package:book_dragon/core/extensions/localization_extensions.dart';
+import 'package:book_dragon/core/router/app_router.dart';
+import 'package:book_dragon/core/router/app_router_names.dart';
 import 'package:book_dragon/core/theme/consts.dart';
 import 'package:book_dragon/global_widgets/app_elevated_button.dart';
+import 'package:book_dragon/global_widgets/app_text_field.dart';
+import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class SignIn extends StatelessWidget {
+class SignIn extends HookConsumerWidget {
   const SignIn({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final localization = AppLocalizations.of(context);
     final textStyle = context.theme.textTheme;
+
+    const verificationId = '1234';
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -27,23 +36,59 @@ class SignIn extends StatelessWidget {
           style: textStyle.headlineLarge,
         ),
         Text(
-          localization.pleaseSignIn,
+          localization.enterNumberForCode,
           style: textStyle.headlineSmall,
         ),
         const SizedBox(
           height: 16,
         ),
-        TextField(
-          decoration: InputDecoration(
-            hintText: '${localization.email} / ${localization.username}',
-          ),
-        ),
-        const SizedBox(
-          height: 16,
-        ),
-        TextField(
-          decoration: InputDecoration(
-            hintText: localization.password,
+        AppTextField(
+          hintText: localization.pickYourCode,
+          suffixIcon: Padding(
+            padding: const EdgeInsets.only(
+              top: 8,
+            ),
+            child: GestureDetector(
+              onTap: () {
+                showCountryPicker(
+                  context: context,
+                  onSelect: (code) {
+                    // ref.read(countryCodeProvider.notifier).changeCountry(code);
+                  },
+                  countryListTheme: CountryListThemeData(
+                    backgroundColor: AppColor.darkBrown,
+                    bottomSheetHeight: MediaQuery.of(context).size.height * .6,
+                    borderRadius: const BorderRadius.vertical(
+                      top: Radius.circular(AppConst.kBorderRadius * 3),
+                    ),
+                    textStyle: textStyle.labelMedium,
+                    searchTextStyle: textStyle.labelMedium,
+                    inputDecoration: InputDecoration(
+                      border: const OutlineInputBorder(),
+                      labelText: localization.search,
+                      hintStyle: textStyle.labelMedium!.copyWith(
+                        color: AppColor.lightGrey,
+                      ),
+                      hintText: localization.search,
+                    ),
+                  ),
+                );
+              },
+              child: Padding(
+                padding: EdgeInsets.only(top: 1.5.h),
+                child: Text(
+                  localization.pickYourCode,
+                  // style: GoogleFonts.poppins(
+                  //   fontSize: code == null ? 13 : 18,
+                  //   color: code == null
+                  //       ? Colours.lightBlue
+                  //       : Colours.darkBackground,
+                  //   fontWeight:
+                  //       code == null ? FontWeight.w500 : FontWeight.bold,
+                  // ),
+                ),
+              ),
+            ),
           ),
         ),
         const SizedBox(
@@ -52,14 +97,19 @@ class SignIn extends StatelessWidget {
         SizedBox(
           width: 210.w,
           child: AppElevatedButton(
-            btnText: localization.signIn,
+            btnText: localization.sendCode,
             onPressed: () {
-              // TODO(sign-in-btn): login
+              DI.getIt<AppRouter>().router.pushNamed(
+                AppRouteNames.otp,
+                queryParameters: {
+                  if (verificationId != null) 'verification_Id': verificationId,
+                },
+              );
             },
           ),
         ),
         const SizedBox(
-          height: 16,
+          height: 20,
         ),
         Text(
           localization.forgotPassword,

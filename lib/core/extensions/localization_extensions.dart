@@ -42,7 +42,6 @@ extension AppLocalizationsWithFallback on AppLocalizations? {
       this?.faithTrustPixieDust ??
       'All you need is faith, trust, and a little bit of pixie dust.';
 
-  /// 🔹 **Authentication Strings**
   String get authentication => this?.authentication ?? 'Authentication';
 
   String get signIn => this?.signIn ?? 'Sign In';
@@ -75,7 +74,6 @@ extension AppLocalizationsWithFallback on AppLocalizations? {
   String get successfulRegistration =>
       this?.successfulRegistration ?? 'Successful registration';
 
-  /// 🔹 **New Authentication Strings**
   String get welcome => this?.welcome ?? 'Welcome to';
 
   String get pleaseSignIn => this?.pleaseSignIn ?? 'Please sign in to continue';
@@ -91,4 +89,14 @@ extension AppLocalizationsWithFallback on AppLocalizations? {
   String get orAuthWith => this?.orAuthWith ?? 'Or auth with';
 
   String get or => this?.or ?? 'OR';
+
+  String get enterNumberForCode =>
+      this?.enterNumberForCode ??
+      'Please enter your number to get the verification code.';
+
+  String get search => this?.search ?? 'Search';
+
+  String get pickYourCode => this?.pickYourCode ?? 'Pick your code';
+
+  String get sendCode => this?.sendCode ?? 'Send Code';
 }

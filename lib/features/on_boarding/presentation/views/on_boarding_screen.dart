@@ -79,7 +79,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 child: AppElevatedButton(
                   btnText: AppLocalizations.of(context).getStarted,
                   onPressed: () {
-                    DI.getIt<AppRouter>().router.pushNamed(AppRouteNames.auth);
+                    DI.getIt<AppRouter>().router.goNamed(AppRouteNames.auth);
                   },
                 ),
               ),

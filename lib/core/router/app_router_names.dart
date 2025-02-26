@@ -3,4 +3,5 @@ class AppRouteNames {
   static const String initialLocation = '/';
   static const String onBoarding = '/onBoarding';
   static const String auth = '/auth';
+  static const String otp = '/otp';
 }
