@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "762682918970",
+    "project_id": "book-dragon-app",
+    "storage_bucket": "book-dragon-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:762682918970:android:a60e97baeeb3c01d194d03",
+        "android_client_info": {
+          "package_name": "com.example.book_dragon"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXEniHnuzLQXC0w-I0ULy19EV3gaEOOXU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

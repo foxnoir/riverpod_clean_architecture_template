@@ -1,6 +1,7 @@
 import 'package:book_dragon/core/theme/consts.dart';
 import 'package:book_dragon/core/theme/media_consts.dart';
 import 'package:book_dragon/core/utils/core_utils.dart';
+import 'package:book_dragon/global_widgets/app_img_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -14,8 +15,8 @@ class OTPVerificationScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      body: ColoredBox(
-        color: AppColor.background,
+      body: AppImgContainer(
+        image: AppImg.startBg,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30),
           child: Column(

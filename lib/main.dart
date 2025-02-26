@@ -3,6 +3,8 @@ import 'package:book_dragon/core/di/di.dart';
 import 'package:book_dragon/core/log/logger.dart';
 import 'package:book_dragon/core/router/app_router.dart';
 import 'package:book_dragon/core/theme/theme.dart';
+import 'package:book_dragon/firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,6 +13,9 @@ import 'package:injectable/injectable.dart';
 Future<void> main() async {
   await runZonedGuarded(() async {
     WidgetsFlutterBinding.ensureInitialized();
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
     await _loadApp();
   }, (Object error, StackTrace stack) {
     logger.info('zone error $error');
