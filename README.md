@@ -54,6 +54,27 @@
       </ul>
     </li>
     <li>
+      <a href="#riverpod-hooks">Riverpod Hooks</a>
+      <ul>
+        <li><a href="#when-are-hooks-useful-in-riverpod">When Are Hooks Useful in Riverpod?</a></li>
+      </ul>
+      <ul>
+        <li><a href="#when-is-hookconsumerwidget-necessary">When Is HookConsumerWidget Necessary?</a></li>
+      </ul>
+      <ul>
+        <li><a href="#important-riverpod-hooks">Important Riverpod Hooks</a></li>
+      </ul>
+      <ul>
+        <li><a href="#when-shoukd-you-use-consumerstatefulwidget">When Should You Use ConsumerStatefulWidget?</a></li>
+      </ul>
+      <ul>
+        <li><a href="#when-is-consumerstatefulwidget-required">When Is ConsumerStatefulWidget Required?</a></li>
+      </ul>
+      <ul>
+        <li><a href="#summary">summary</a></li>
+      </ul>
+    </li>
+    <li>
       <a href="#style-guide">Style Guide</a>
       <ul>
         <li><a href="#color-palette">Color Palette</a></li>
@@ -330,6 +351,7 @@ A `Provider` delivers an immutable piece of information:
 final helloProvider = Provider((ref) => "Hello, Riverpod!");
 ```
 
+<p align="right"><a href="#readme-top">back to top</a></p>
 
 
 #### **2. StateProvider: Mutable State**
@@ -451,7 +473,7 @@ class ClockScreen extends ConsumerWidget {
 -   When using **real-time updates from Firestore**.
 -   For **real-time clocks or sensor data**.
 
-* * * * *
+<p align="right"><a href="#readme-top">back to top</a></p>
 
 #### **5. StateNotifierProvider: Managing Complex States**
 
@@ -504,8 +526,10 @@ class CounterScreen extends ConsumerWidget {
 -   When your state consists of **multiple values or methods**.
 -   For **login status, shopping cart, complex forms, or app state**.
 
+<p align="right"><a href="#readme-top">back to top</a></p>
 
-### Summary: Which Provider Should I Use?**
+
+### Summary: Which Provider Should I Use?
 ---------------------------------------------
 
 | Provider | Description | Best Use Case |
@@ -518,12 +542,323 @@ class CounterScreen extends ConsumerWidget {
 
 * * * * *
 
+<p align="right"><a href="#readme-top">back to top</a></p>
+
+
 ### Conclusion
 
 Riverpod is a **safe, structured, and scalable** way to manage state in Flutter applications.\
 With **various providers**, it covers **simple**, **asynchronous**, and **complex** state management needs, making it a great choice for both small and large projects.
 
 By understanding **how Providers work**, how to **handle states properly**, and when to use **StateProvider, FutureProvider, StreamProvider, and StateNotifierProvider**, you can **build robust and maintainable Flutter applications** efficiently.
+
+<p align="right"><a href="#readme-top">back to top</a></p>
+
+---
+
+## [Riverpod Hooks](https://pub.dev/packages/hooks_riverpod)
+
+
+Riverpod Hooks are an extension of **Flutter Hooks** that simplify working with Riverpod providers inside widgets.\
+They come from the **hooks_riverpod** package (`package:hooks_riverpod/hooks_riverpod.dart`) and **reduce boilerplate code while improving performance**.
+
+<p align="right"><a href="#readme-top">back to top</a></p>
+
+### When Are Hooks Useful in Riverpod?
+
+-   When you need **local state** without using `StatefulWidget`.
+-   When you need to execute a function **only once when a widget is built** (like `initState()`).
+-   When you want to **store expensive calculations or data** without recomputing them.
+
+<p align="right"><a href="#readme-top">back to top</a></p>
+
+
+### When Is HookConsumerWidget Necessary?
+
+`HookConsumerWidget` is **only necessary** when using Hooks like `useState`, `useEffect`, or `useMemoized`.\
+If you are only using `ref.watch()` or `ref.read()`, `ConsumerWidget` is sufficient.
+
+| **Widget** | **When to Use?** |
+| --- | --- |
+| `ConsumerWidget` | When you only retrieve Riverpod providers (`ref.watch()` or `ref.read()`). |
+| `HookConsumerWidget` | When you use hooks like `useState`, `useEffect`, or `useMemoized`. |
+
+ 
+<p align="right"><a href="#readme-top">back to top</a></p>
+
+## Important Riverpod Hooks
+
+### **`useState` -- Local State Without `StatefulWidget`**
+
+```dart
+final counter = useState(0);
+```
+
+Stores a simple **local UI state**, like counters or form inputs.
+
+
+### **`useEffect` -- Like `initState()`, for Lifecycle Events**
+
+```dart
+useEffect(() {
+  print("This widget was created");
+  return null; // Cleanup function (optional)
+}, const []);
+```
+
+Executes a function **once when the widget is built**.
+
+### **`useMemoized` -- Caching Expensive Calculations**
+
+```dart
+final result = useMemoized(() => performExpensiveCalculation(), []);
+```
+
+Stores expensive calculations and **only recomputes them when dependencies change**.
+
+<p align="right"><a href="#readme-top">back to top</a></p>
+
+
+### When Should You Use ConsumerStatefulWidget?
+
+
+Although **`HookConsumerWidget`** can replace `ConsumerStatefulWidget` in many cases, there are **specific situations** where `ConsumerStatefulWidget` is still necessary.
+
+### **Key Differences: `HookConsumerWidget` vs. `ConsumerStatefulWidget`**
+
+| Widget | When to Use? |
+| --- | --- |
+| **`HookConsumerWidget`** | If you need **Hooks for managing state** (`useState`, `useEffect`, `useMemoized`). |
+| **`ConsumerStatefulWidget`** | If you need **complex UI state** that persists across widget rebuilds (e.g., `AnimationController`, `TabController`). |
+
+
+<p align="right"><a href="#readme-top">back to top</a></p>
+
+### When Is ConsumerStatefulWidget Required?
+
+#### **1. If You Need `initState()` or `dispose()`**
+
+**If your widget requires `initState()` or `dispose()`, you must use `ConsumerStatefulWidget`.**\
+Hooks can replace `initState()` for simple cases (`useEffect`), but they cannot directly handle `dispose()`.
+
+
+
+#### **Example: Using `AnimationController`**
+
+This example demonstrates why `ConsumerStatefulWidget` is necessary when working with an `AnimationController`:
+
+```dart
+class AnimatedBox extends ConsumerStatefulWidget {
+  @override
+  _AnimatedBoxState createState() => _AnimatedBoxState();
+}
+
+class _AnimatedBoxState extends ConsumerState<AnimatedBox>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: Duration(seconds: 1),
+    )..repeat(reverse: true);
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      animation: _controller,
+      builder: (context, child) {
+        return Transform.scale(
+          scale: 1 + _controller.value,
+          child: Container(width: 100, height: 100, color: Colors.blue),
+        );
+      },
+    );
+  }
+}
+```
+
+➡ **Why do we need `ConsumerStatefulWidget` here?**
+
+-   `HookConsumerWidget` **does not support mixins** (`with SingleTickerProviderStateMixin` is required).
+-   `initState()` is required to initialize the `AnimationController`.
+-   `dispose()` must be explicitly called to **avoid memory leaks**.
+
+<p align="right"><a href="#readme-top">back to top</a></p>
+
+#### **2. If You Need `setState()` Along with Riverpod**
+
+If you need a **local UI state that is not managed by Riverpod**, then `ConsumerStatefulWidget` is necessary.
+
+**Example: A UI toggle switch that is local, while Riverpod manages a global counter.**
+
+```dart
+class ToggleScreen extends ConsumerStatefulWidget {
+  @override
+  _ToggleScreenState createState() => _ToggleScreenState();
+}
+
+class _ToggleScreenState extends ConsumerState<ToggleScreen> {
+  bool isOn = false;
+
+  @override
+  Widget build(BuildContext context) {
+    final counter = ref.watch(counterProvider);
+    return Scaffold(
+      body: Column(
+        children: [
+          Text("Counter: $counter"),
+          Switch(
+            value: isOn,
+            onChanged: (value) {
+              setState(() {
+                isOn = value;
+              });
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}
+```
+
+➡ **Why do we need `ConsumerStatefulWidget` here?**
+
+-   The **toggle state (`isOn`) is local** and **not managed by Riverpod**.
+-   `setState()` is required to update the **local UI state**.
+
+<p align="right"><a href="#readme-top">back to top</a></p>
+
+#### **3. If You Need `PageController`, `TabController`, or `ScrollController`**
+
+These controllers must be initialized in `initState()` and disposed of properly in `dispose()`.
+
+**Example: Using `TabController`**
+
+```dart
+class TabScreen extends ConsumerStatefulWidget {
+  @override
+  _TabScreenState createState() => _TabScreenState();
+}
+
+class _TabScreenState extends ConsumerState<TabScreen>
+    with SingleTickerProviderStateMixin {
+  late TabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 3, vsync: this);
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        bottom: TabBar(
+          controller: _tabController,
+          tabs: [
+            Tab(text: "Tab 1"),
+            Tab(text: "Tab 2"),
+            Tab(text: "Tab 3"),
+          ],
+        ),
+      ),
+      body: TabBarView(
+        controller: _tabController,
+        children: [
+          Center(child: Text("Page 1")),
+          Center(child: Text("Page 2")),
+          Center(child: Text("Page 3")),
+        ],
+      ),
+    );
+  }
+}
+```
+
+➡ **Why do we need `ConsumerStatefulWidget` here?**
+
+-   `TabController` requires `SingleTickerProviderStateMixin`.
+-   `initState()` is needed to initialize the controller.
+-   `dispose()` must be called to prevent memory leaks.
+
+<p align="right"><a href="#readme-top">back to top</a></p>
+
+#### When Should You Use ConsumerStatefulWidget?
+
+| **Use Case** | **Why Is It Needed?** |
+| --- | --- |
+| **Using `AnimationController`, `TabController`, `PageController`** | `initState()` and `dispose()` are required. |
+| **Using `setState()` along with Riverpod** | When managing local UI state that is **not in Riverpod**. |
+| **Using Mixins (`with SingleTickerProviderStateMixin`)** | Hooks do not support mixins. |
+
+<p align="right"><a href="#readme-top">back to top</a></p>
+
+#### When Should You Use HookConsumerWidget Instead?
+
+| **Use Case** | **Why Hooks Are Better?** |
+| --- | --- |
+| **Simple local states** | `useState()` is more compact than `setState()`. |
+| **One-time initialization (like `initState()`)** | `useEffect()` replaces `initState()` for simple cases. |
+| **Caching expensive calculations** | `useMemoized()` prevents unnecessary recomputations. |
+
+
+
+**6\. Summary**
+---------------
+
+-   If you **don't need hooks**, use **`ConsumerWidget`**.
+-   If you **need hooks** (`useState`, `useEffect`, `useMemoized`), use **`HookConsumerWidget`**.
+-   If you **need `initState()`, `dispose()`, mixins, or complex controllers**, use **`ConsumerStatefulWidget`**.
+
+----------------------------------------------------------
+
+| **What Do You Need?** | **Which Widget to Use?** |
+| --- | --- |
+| Just using `ref.watch()` or `ref.read()` | `ConsumerWidget` |
+| Using `useState()`, `useEffect()`, `useMemoized()` | `HookConsumerWidget` |
+| Using `AnimationController`, `TabController`, `PageController` | `ConsumerStatefulWidget` |
+| Using `setState()` along with Riverpod | `ConsumerStatefulWidget` |
+
+<p align="right"><a href="#readme-top">back to top</a></p>
+
+### **Final Recommendations:**
+
+| **Scenario** | **Best Widget** |
+| --- | --- |
+| Using only `ref.watch()` | `ConsumerWidget` |
+| Using hooks (`useState`, `useEffect`) | `HookConsumerWidget` |
+| Need `AnimationController`, `TabController`, `ScrollController` | `ConsumerStatefulWidget` |
+| Using `setState()` with Riverpod | `ConsumerStatefulWidget` |
+
+<p align="right"><a href="#readme-top">back to top</a></p>
+
+### Summary
+
+| Hook | Description | Best Use Case |
+| --- | --- | --- |
+| `useState` | Local state without `StatefulWidget` | UI state, form inputs, toggles |
+| `useEffect` | Like `initState()` | Initial API calls, lifecycle events |
+| `useMemoized` | Caches expensive calculations | Data caching, performance optimization |
+
+Riverpod Hooks make **state management cleaner, more modular, and more efficient**.
 
 <p align="right"><a href="#readme-top">back to top</a></p>
 

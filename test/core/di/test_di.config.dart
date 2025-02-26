@@ -31,8 +31,6 @@ import 'package:book_dragon/features/on_boarding/domain/usecases/cache_first_tim
     as _i796;
 import 'package:book_dragon/features/on_boarding/domain/usecases/check_if_user_is_first_timer.dart'
     as _i765;
-import 'package:book_dragon/features/on_boarding/presentation/cubit/on_boarding_cubit.dart'
-    as _i888;
 import 'package:book_dragon/features/storage/prefs.dart' as _i843;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:http/http.dart' as _i519;
@@ -74,10 +72,6 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i796.CacheFirstTimer(gh<_i554.OnBoardingRepo>()));
     gh.factory<_i765.CheckIfUserIsFirstTimer>(
         () => _i765.CheckIfUserIsFirstTimer(gh<_i554.OnBoardingRepo>()));
-    gh.factory<_i888.OnBoardingCubit>(() => _i888.OnBoardingCubit(
-          cacheFirstTimer: gh<_i796.CacheFirstTimer>(),
-          checkIfUserIsFirstTimer: gh<_i765.CheckIfUserIsFirstTimer>(),
-        ));
     return this;
   }
 }
