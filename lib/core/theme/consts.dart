@@ -19,6 +19,7 @@ class AppColor {
   static const Color lightGrey = Color(0xFFE9E9E9);
   static const Color boxGrey = Color(0xFF9E9E9E);
   static const Color error = Color(0xFF771305);
+  static const Color background = Color(0xFFFEEBDC);
 
   static const Color darkBrown = Color(0xFF793e25);
   static const Color lightBrown = Color(0xFF935f46);

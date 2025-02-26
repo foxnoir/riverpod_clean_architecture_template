@@ -98,6 +98,7 @@
         <li><a href="#go-router">Go Router</a></li>
      </ul>
     </li>
+    <li><a href="#sources">Sourcs</a></li>
   </ol>
 </details>
 
@@ -759,6 +760,17 @@ context.replace('/newPage');
 - [TDD](https://www.browserstack.com/guide/tdd-in-flutter)
 
 <p align="right"><a href="#readme-top">back to top</a></p>
+
+---
+
+## **Sources**
+
+[Login Layout Inspo](https://github.com/gerfagerfa/login_and_signup)
+[Images](https://www.marigonasuli.com/)
+
+<p align="right"><a href="#readme-top">back to top</a></p>
+
+---
 
 [bloc]: https://img.shields.io/badge/Riverpod-8B0000.svg?style=for-the-badge&logo=bloc&logoColor=white
 [bloc-url]: https://pub.dev/packages/bloc

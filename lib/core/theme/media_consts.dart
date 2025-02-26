@@ -15,4 +15,5 @@ class AppImg {
   static const String notFound = 'assets/images/backgrounds/notFound.png';
   static const String splash = 'assets/images/splash.png';
   static const String defaultProfile = 'assets/images/default_profile.png';
+  static const String otp = 'assets/images/backgrounds/otp.png';
 }

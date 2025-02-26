@@ -73,15 +73,26 @@ ThemeData _buildTheme(ColorScheme colorScheme) {
       selectedLabelStyle: textTheme.labelSmall,
       unselectedLabelStyle: textTheme.labelSmall,
     ),
-    dividerTheme: const DividerThemeData(
-      color: AppColor.lightGrey,
-      thickness: 1,
-    ),
     cardTheme: CardTheme(
       color: colorScheme.surface,
       elevation: 5,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(AppConst.kBorderRadius),
+      ),
+    ),
+    dividerTheme: const DividerThemeData(
+      color: AppColor.lightGrey,
+      thickness: 1,
+    ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: colorScheme.secondary,
+        foregroundColor: colorScheme.surface,
+        minimumSize: const Size.fromHeight(38),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppConst.kBorderRadius * 2),
+        ),
+        textStyle: textTheme.labelMedium,
       ),
     ),
     inputDecorationTheme: InputDecorationTheme(
@@ -98,16 +109,10 @@ ThemeData _buildTheme(ColorScheme colorScheme) {
       ),
       contentPadding: const EdgeInsets.symmetric(horizontal: 16),
     ),
-    elevatedButtonTheme: ElevatedButtonThemeData(
-      style: ElevatedButton.styleFrom(
-        backgroundColor: colorScheme.secondary,
-        foregroundColor: colorScheme.surface,
-        minimumSize: const Size.fromHeight(38),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(AppConst.kBorderRadius * 2),
-        ),
-        textStyle: textTheme.labelMedium,
-      ),
+    snackBarTheme: SnackBarThemeData(
+      backgroundColor: colorScheme.secondary,
+      contentTextStyle: textTheme.labelMedium,
+      actionTextColor: colorScheme.onPrimary,
     ),
   );
 }
