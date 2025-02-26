@@ -59,10 +59,11 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyDvbTu7JnRJ4_JN5TF3P_LSqkYOeL3WbDY',
-    appId: '1:762682918970:ios:618e1e079c9fdf31194d03',
+    appId: '1:762682918970:ios:dcb2010061ce2af2194d03',
     messagingSenderId: '762682918970',
     projectId: 'book-dragon-app',
     storageBucket: 'book-dragon-app.firebasestorage.app',
-    iosBundleId: 'com.example.tddCleanArchitectureTemplate',
+    iosBundleId: 'com.example.bookDragon',
   );
+
 }
