@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CLIENT_ID</key>
+	<string>762682918970-90hskbjrh16bu56a45mc4fi1fh3bukbh.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.762682918970-90hskbjrh16bu56a45mc4fi1fh3bukbh</string>
 	<key>API_KEY</key>
 	<string>AIzaSyDvbTu7JnRJ4_JN5TF3P_LSqkYOeL3WbDY</string>
 	<key>GCM_SENDER_ID</key>
@@ -9,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.example.tddCleanArchitectureTemplate</string>
+	<string>com.example.bookDragon</string>
 	<key>PROJECT_ID</key>
 	<string>book-dragon-app</string>
 	<key>STORAGE_BUCKET</key>
@@ -25,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:762682918970:ios:618e1e079c9fdf31194d03</string>
+	<string>1:762682918970:ios:dcb2010061ce2af2194d03</string>
 </dict>
 </plist>
