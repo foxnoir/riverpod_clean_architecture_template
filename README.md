@@ -47,6 +47,9 @@
         <li><a href="#core-riverpod-provider">Core Riverpod Provider</a></li>
       </ul>
       <ul>
+        <li><a href="#summary">Summary</a></li>
+      </ul>
+      <ul>
         <li><a href="#conclusion">Conclusion</a></li>
       </ul>
     </li>
@@ -284,40 +287,133 @@ Write test for riverpod_files.
 
 ## [Riverpod](https://pub.dev/packages/riverpod)
 
-Riverpod is a powerful **state management framework** for Flutter that improves upon Provider. It offers **safe, testable, and flexible** dependency management while avoiding common issues like accessing deleted objects or requiring `BuildContext`.
+Riverpod is a **state management framework** for Flutter that improves upon Provider. It provides a **safe, testable, and flexible** way to manage dependencies and control the state of an application.
 
-### Why Riverpod instead of Provider
+* * * * *
 
--   **Safe dependency management**: Prevents accessing disposed objects.
--   **Better performance**: Optimized updates and memory handling.
--   **No `BuildContext` required**: Providers are independent of the widget tree.
--   **Global and local state management**: With minimal boilerplate.
--   **Supports asynchronous state**: Easy integration of `FutureProvider` and `StreamProvider`.
+**1\. What Does a Provider Do?**
+--------------------------------
+
+A **Provider** in Riverpod has three main tasks:
+
+1.  **Creates a resource or state**:
+
+    -   This can be a simple value, a class, or complex logic.
+2.  **Stores this state throughout the app lifecycle**:
+
+    -   This ensures that values persist even when a widget is rebuilt.
+3.  **Notifies widgets when the state changes**:
+
+    -   Riverpod automatically rebuilds widgets when the observed state updates.
+
+* * * * *
+
+**2\. Difference Between `Provider` and `State`**
+-------------------------------------------------
+
+A **Provider** is a data source, but not all Providers have a state.
+
+-   **Provider** = Returns a value (immutable).
+-   **StateProvider** = Stores a value that can change.
+
+A Provider is essentially **a source of data**, while a state is **a momentary variable** that can be modified.
 
 ### Core Riverpod Provider
 
-#### **1. Provider (Read-only computed value)**
+Riverpod offers different providers for **various types of states**.
+
+#### **1. Provider (Constant / Read-only computed value)**
+
+A `Provider` delivers an immutable piece of information:
 
 ```dart
 final helloProvider = Provider((ref) => "Hello, Riverpod!");
 ```
 
-#### **2 StateProvider (Mutable state with `.state`)**
+
+
+#### **2. StateProvider: Mutable State**
+
+Use `StateProvider` when you have a simple variable that needs to be updated.
 
 ```dart
 final counterProvider = StateProvider<int>((ref) => 0);
+
+class CounterScreen extends ConsumerWidget {
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final counter = ref.watch(counterProvider);
+    return Scaffold(
+      body: Center(
+        child: Column(
+          children: [
+            Text("Counter: $counter"),
+            ElevatedButton(
+              onPressed: () => ref.read(counterProvider.notifier).state++,
+              child: Text("Increase"),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
 ```
 
-#### **3 FutureProvider (Asynchronous data)**
+**How Does It Work?**
+
+-   `StateProvider<int>` holds a **modifiable number**.
+-   `ref.watch(counterProvider)` observes this value and rebuilds the widget when it changes.
+-   `ref.read(counterProvider.notifier).state++` updates the value.
+
+**When to Use `StateProvider`?**
+
+-   When you need to manage **small, local states**.
+-   For simple **counters, form data, or flags**.
+
+
+#### **3. FutureProvider: Asynchronous Data**
+
+A `FutureProvider` is used for **asynchronous data**, such as API requests.
 
 ```dart
 final userNameProvider = FutureProvider<String>((ref) async {
   await Future.delayed(Duration(seconds: 2));
   return "John Doe";
 });
+
+class UserScreen extends ConsumerWidget {
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final userAsync = ref.watch(userNameProvider);
+    return Scaffold(
+      body: Center(
+        child: userAsync.when(
+          data: (name) => Text("Hello, $name!"),
+          loading: () => CircularProgressIndicator(),
+          error: (err, stack) => Text("Error: $err"),
+        ),
+      ),
+    );
+  }
+}
 ```
 
-#### **4 StreamProvider (Continuous data stream)**
+**How Does It Work?**
+
+-   `FutureProvider` manages an **asynchronous state**.
+-   `when(data, loading, error)` ensures that all **three possible states** are handled.
+
+**When to Use `FutureProvider`?**
+
+-   For **API requests**.
+-   When retrieving **data from a database**.
+-   When fetching **SharedPreferences data**.
+
+
+#### **4 StreamProvider: Continuous Real-Time Data**
+
+A `StreamProvider` is useful for **continuous data streams**, such as Firebase Firestore.
 
 ```dart
 final timeProvider = StreamProvider<DateTime>((ref) async* {
@@ -326,9 +422,40 @@ final timeProvider = StreamProvider<DateTime>((ref) async* {
     yield DateTime.now();
   }
 });
+
+class ClockScreen extends ConsumerWidget {
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final time = ref.watch(timeProvider);
+    return Scaffold(
+      body: Center(
+        child: time.when(
+          data: (time) => Text("Time: ${time.toIso8601String()}"),
+          loading: () => CircularProgressIndicator(),
+          error: (err, stack) => Text("Error: $err"),
+        ),
+      ),
+    );
+  }
+}
 ```
 
-#### **5. StateNotifierProvider (Complex state with methods)**
+**How Does It Work?**
+
+-   `StreamProvider` **continuously emits new values**.
+-   The widget **automatically updates** when the value changes.
+
+**When to Use `StreamProvider`?**
+
+-   For **WebSocket connections**.
+-   When using **real-time updates from Firestore**.
+-   For **real-time clocks or sensor data**.
+
+* * * * *
+
+#### **5. StateNotifierProvider: Managing Complex States**
+
+For larger states with multiple variables and methods, `StateNotifierProvider` is ideal.
 
 ```dart
 class CounterNotifier extends StateNotifier<int> {
@@ -336,15 +463,67 @@ class CounterNotifier extends StateNotifier<int> {
   void increment() => state++;
 }
 
+
 final counterNotifierProvider = StateNotifierProvider<CounterNotifier, int>(
   (ref) => CounterNotifier(),
 );
+
+class CounterScreen extends ConsumerWidget {
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final counter = ref.watch(counterNotifierProvider);
+    return Scaffold(
+      body: Center(
+        child: Column(
+          children: [
+            Text("Counter: $counter"),
+            ElevatedButton(
+              onPressed: () => ref.read(counterNotifierProvider.notifier).increment(),
+              child: Text("Increase"),
+            ),
+            ElevatedButton(
+              onPressed: () => ref.read(counterNotifierProvider.notifier).decrement(),
+              child: Text("Decrease"),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
 ```
+
+**How Does It Work?**
+
+-   `StateNotifier<int>` manages the state.
+-   `increment()` and `decrement()` modify the value.
+-   `StateNotifierProvider` ensures **a clean separation of logic**.
+
+**When to Use `StateNotifierProvider`?**
+
+-   When your state consists of **multiple values or methods**.
+-   For **login status, shopping cart, complex forms, or app state**.
+
+
+### Summary: Which Provider Should I Use?**
+---------------------------------------------
+
+| Provider | Description | Best Use Case |
+| --- | --- | --- |
+| `Provider` | Static values (e.g., Strings, singletons) | Config, constants |
+| `StateProvider` | Simple mutable state | Counters, forms, booleans |
+| `FutureProvider` | One-time async operations | API requests, database calls |
+| `StreamProvider` | Continuous real-time data | Firestore, Websockets |
+| `StateNotifierProvider` | Complex state with methods | Authentication, shopping cart |
+
+* * * * *
 
 ### Conclusion
 
-Riverpod is an **efficient**, **safe**, and **testable** way to manage state in Flutter applications.\
+Riverpod is a **safe, structured, and scalable** way to manage state in Flutter applications.\
 With **various providers**, it covers **simple**, **asynchronous**, and **complex** state management needs, making it a great choice for both small and large projects.
+
+By understanding **how Providers work**, how to **handle states properly**, and when to use **StateProvider, FutureProvider, StreamProvider, and StateNotifierProvider**, you can **build robust and maintainable Flutter applications** efficiently.
 
 <p align="right"><a href="#readme-top">back to top</a></p>
 
