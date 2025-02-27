@@ -350,7 +350,7 @@ A `Provider` delivers an immutable piece of information:
 ```dart
 final helloProvider = Provider((ref) => "Hello, Riverpod!");
 ```
-
+----------------------------------------------------------
 <p align="right"><a href="#readme-top">back to top</a></p>
 
 
@@ -381,7 +381,7 @@ class CounterScreen extends ConsumerWidget {
   }
 }
 ```
-
+----------------------------------------------------------
 **How Does It Work?**
 
 -   `StateProvider<int>` holds a **modifiable number**.
@@ -420,7 +420,7 @@ class UserScreen extends ConsumerWidget {
   }
 }
 ```
-
+----------------------------------------------------------
 **How Does It Work?**
 
 -   `FutureProvider` manages an **asynchronous state**.
@@ -461,7 +461,7 @@ class ClockScreen extends ConsumerWidget {
   }
 }
 ```
-
+----------------------------------------------------------
 **How Does It Work?**
 
 -   `StreamProvider` **continuously emits new values**.
@@ -514,7 +514,7 @@ class CounterScreen extends ConsumerWidget {
   }
 }
 ```
-
+----------------------------------------------------------
 **How Does It Work?**
 
 -   `StateNotifier<int>` manages the state.
@@ -593,7 +593,7 @@ If you are only using `ref.watch()` or `ref.read()`, `ConsumerWidget` is suffici
 ```dart
 final counter = useState(0);
 ```
-
+----------------------------------------------------------
 Stores a simple **local UI state**, like counters or form inputs.
 
 
@@ -605,7 +605,7 @@ useEffect(() {
   return null; // Cleanup function (optional)
 }, const []);
 ```
-
+----------------------------------------------------------
 Executes a function **once when the widget is built**.
 
 ### **`useMemoized` -- Caching Expensive Calculations**
@@ -613,7 +613,7 @@ Executes a function **once when the widget is built**.
 ```dart
 final result = useMemoized(() => performExpensiveCalculation(), []);
 ```
-
+----------------------------------------------------------
 Stores expensive calculations and **only recomputes them when dependencies change**.
 
 <p align="right"><a href="#readme-top">back to top</a></p>
@@ -686,7 +686,7 @@ class _AnimatedBoxState extends ConsumerState<AnimatedBox>
   }
 }
 ```
-
+----------------------------------------------------------
 ➡ **Why do we need `ConsumerStatefulWidget` here?**
 
 -   `HookConsumerWidget` **does not support mixins** (`with SingleTickerProviderStateMixin` is required).
@@ -731,7 +731,7 @@ class _ToggleScreenState extends ConsumerState<ToggleScreen> {
   }
 }
 ```
-
+----------------------------------------------------------
 ➡ **Why do we need `ConsumerStatefulWidget` here?**
 
 -   The **toggle state (`isOn`) is local** and **not managed by Riverpod**.
@@ -792,6 +792,7 @@ class _TabScreenState extends ConsumerState<TabScreen>
   }
 }
 ```
+----------------------------------------------------------
 
 ➡ **Why do we need `ConsumerStatefulWidget` here?**
 
@@ -800,6 +801,8 @@ class _TabScreenState extends ConsumerState<TabScreen>
 -   `dispose()` must be called to prevent memory leaks.
 
 <p align="right"><a href="#readme-top">back to top</a></p>
+
+----------------------------------------------------------
 
 #### When Should You Use ConsumerStatefulWidget?
 
@@ -811,6 +814,8 @@ class _TabScreenState extends ConsumerState<TabScreen>
 
 <p align="right"><a href="#readme-top">back to top</a></p>
 
+----------------------------------------------------------
+
 #### When Should You Use HookConsumerWidget Instead?
 
 | **Use Case** | **Why Hooks Are Better?** |
@@ -820,13 +825,21 @@ class _TabScreenState extends ConsumerState<TabScreen>
 | **Caching expensive calculations** | `useMemoized()` prevents unnecessary recomputations. |
 
 
+<p align="right"><a href="#readme-top">back to top</a></p>
 
-**6\. Summary**
----------------
+### Summary
 
 -   If you **don't need hooks**, use **`ConsumerWidget`**.
 -   If you **need hooks** (`useState`, `useEffect`, `useMemoized`), use **`HookConsumerWidget`**.
 -   If you **need `initState()`, `dispose()`, mixins, or complex controllers**, use **`ConsumerStatefulWidget`**.
+
+----------------------------------------------------------
+
+| Hook | Description | Best Use Case |
+| --- | --- | --- |
+| `useState` | Local state without `StatefulWidget` | UI state, form inputs, toggles |
+| `useEffect` | Like `initState()` | Initial API calls, lifecycle events |
+| `useMemoized` | Caches expensive calculations | Data caching, performance optimization |
 
 ----------------------------------------------------------
 
@@ -836,6 +849,8 @@ class _TabScreenState extends ConsumerState<TabScreen>
 | Using `useState()`, `useEffect()`, `useMemoized()` | `HookConsumerWidget` |
 | Using `AnimationController`, `TabController`, `PageController` | `ConsumerStatefulWidget` |
 | Using `setState()` along with Riverpod | `ConsumerStatefulWidget` |
+
+----------------------------------------------------------
 
 <p align="right"><a href="#readme-top">back to top</a></p>
 
@@ -847,16 +862,6 @@ class _TabScreenState extends ConsumerState<TabScreen>
 | Using hooks (`useState`, `useEffect`) | `HookConsumerWidget` |
 | Need `AnimationController`, `TabController`, `ScrollController` | `ConsumerStatefulWidget` |
 | Using `setState()` with Riverpod | `ConsumerStatefulWidget` |
-
-<p align="right"><a href="#readme-top">back to top</a></p>
-
-### Summary
-
-| Hook | Description | Best Use Case |
-| --- | --- | --- |
-| `useState` | Local state without `StatefulWidget` | UI state, form inputs, toggles |
-| `useEffect` | Like `initState()` | Initial API calls, lifecycle events |
-| `useMemoized` | Caches expensive calculations | Data caching, performance optimization |
 
 Riverpod Hooks make **state management cleaner, more modular, and more efficient**.
 
@@ -886,7 +891,7 @@ Riverpod Hooks make **state management cleaner, more modular, and more efficient
 
 ### Final Layout
 
-<!-- <img src="images/finalLayout.png" alt="layout" width="100%" height="100%"> -->
+<img src="images/finalLayout.png" alt="icons" width="65%" height="100%">
 
 [Image comming soon]
 
@@ -945,7 +950,6 @@ Riverpod Hooks make **state management cleaner, more modular, and more efficient
 - Download or clone this repo by using the link or the SSH URL below:
 
 ```
-
 https://github.com/foxnoir/riverpod_clean_architecture_template.git
 
 ```
@@ -1003,7 +1007,6 @@ flutter pub run flutter_native_splash:create
 ## **App Architecture and Folder Structure**
 
 ```
-
 flutter-app/
 ├── android
 ├── assets/
@@ -1134,7 +1137,7 @@ final methodCall = remoteDataSource.createUser(
 
 expect(methodCall, completes);
 ```
-
+----------------------------------------------------------
 - **When to Use:**
   - This variant is simple and works for methods that:
     - Perform an asynchronous operation without throwing exceptions.
@@ -1169,7 +1172,7 @@ expect(
   throwsA(isA<APIException>()),
 );
 ```
-
+----------------------------------------------------------
 - **When to Use:**
   - This variant provides flexibility to:
     - Test if the method completes successfully (`completes`).
@@ -1205,7 +1208,7 @@ expect(
   completes,
 );
 ```
-
+----------------------------------------------------------
 ### Testing Exception Handling
 
 ```dart
@@ -1218,7 +1221,7 @@ expect(
   throwsA(isA<APIException>()),
 );
 ```
-
+----------------------------------------------------------
 <p align="right"><a href="#readme-top">back to top</a></p>
 
 ---
@@ -1240,7 +1243,7 @@ Immediate Navigation (Replaces Current Route)
 ```dart
 context.go('/details'); // Navigates to the Details page
 ```
-
+----------------------------------------------------------
 👉 Similar to `Navigator.pushReplacement()` in Flutter.
 
 2. **goNamed()**   
@@ -1267,7 +1270,7 @@ final GoRouter _router = GoRouter(
 
 context.goNamed('details'); // Navigation using the name
 ```
-
+----------------------------------------------------------
 👉 Similar to `go()`, but uses route names instead of direct paths.
 
 3. **push()**   
@@ -1278,7 +1281,7 @@ The previous page remains in the stack (user can go back).
 ```dart
 context.push('/details'); // Adds 'details' to the navigation stack
 ```
-
+----------------------------------------------------------
 👉 Similar to Navigator.push() in Flutter.
 
 4. **pushNamed()**   
@@ -1288,7 +1291,7 @@ Add a Named Route to the Stack
 ```dart
 context.pushNamed('details'); // Adds the Details page to the stack
 ```
-
+----------------------------------------------------------
 👉 Useful if the URL structure changes but the route name stays the same.
 
 5. **pop()**   
@@ -1298,7 +1301,7 @@ Closes the current page and returns to the previous one.
 ```dart
 context.pop();
 ```
-
+----------------------------------------------------------
 👉 Similar to Navigator.pop() in Flutter.
 
 6. **replace()**   
@@ -1308,7 +1311,7 @@ Works like `go()`, but replaces the current page without animation.
 ```dart
 context.replace('/newPage');
 ```
-
+----------------------------------------------------------
 👉 Similar to Navigator.pushReplacement() in Flutter.
 
 ### Summary
@@ -1360,10 +1363,10 @@ context.replace('/newPage');
 
 ---
 
-## **Sources**
+### Sources
 
-[Login Layout Inspo](https://github.com/gerfagerfa/login_and_signup)
-[Images](https://www.marigonasuli.com/)
+- [Login Layout Inspo](https://github.com/gerfagerfa/login_and_signup)
+- [Images](https://www.marigonasuli.com/)
 
 <p align="right"><a href="#readme-top">back to top</a></p>
 
