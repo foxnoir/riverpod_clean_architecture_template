@@ -350,7 +350,7 @@ A `Provider` delivers an immutable piece of information:
 ```dart
 final helloProvider = Provider((ref) => "Hello, Riverpod!");
 ```
-----------------------------------------------------------
+
 <p align="right"><a href="#readme-top">back to top</a></p>
 
 
@@ -432,6 +432,7 @@ class UserScreen extends ConsumerWidget {
 -   When retrieving **data from a database**.
 -   When fetching **SharedPreferences data**.
 
+<p align="right"><a href="#readme-top">back to top</a></p>
 
 #### **4 StreamProvider: Continuous Real-Time Data**
 
@@ -478,6 +479,7 @@ class ClockScreen extends ConsumerWidget {
 #### **5. StateNotifierProvider: Managing Complex States**
 
 For larger states with multiple variables and methods, `StateNotifierProvider` is ideal.
+
 
 ```dart
 class CounterNotifier extends StateNotifier<int> {
@@ -539,8 +541,6 @@ class CounterScreen extends ConsumerWidget {
 | `FutureProvider` | One-time async operations | API requests, database calls |
 | `StreamProvider` | Continuous real-time data | Firestore, Websockets |
 | `StateNotifierProvider` | Complex state with methods | Authentication, shopping cart |
-
-* * * * *
 
 <p align="right"><a href="#readme-top">back to top</a></p>
 
@@ -792,6 +792,7 @@ class _TabScreenState extends ConsumerState<TabScreen>
   }
 }
 ```
+
 ----------------------------------------------------------
 
 ➡ **Why do we need `ConsumerStatefulWidget` here?**
