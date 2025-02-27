@@ -1,11 +1,9 @@
-import 'package:book_dragon/core/extensions/localization_extensions.dart';
 import 'package:book_dragon/core/theme/media_consts.dart';
 import 'package:book_dragon/features/auth/presentation/widgets/auth_curve_painter.dart';
 import 'package:book_dragon/features/auth/presentation/widgets/sign_in.dart';
 import 'package:book_dragon/features/auth/presentation/widgets/signup.dart';
 import 'package:book_dragon/global_widgets/app_img_container.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AuthScreen extends StatefulWidget {
   const AuthScreen({

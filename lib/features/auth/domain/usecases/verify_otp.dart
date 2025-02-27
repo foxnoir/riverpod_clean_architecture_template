@@ -1,6 +1,4 @@
-import 'package:book_dragon/core/usecases/usecases.dart';
 import 'package:book_dragon/core/utils/type_defs.dart';
-import 'package:book_dragon/features/auth/domain/entities/user.dart';
 import 'package:book_dragon/features/auth/domain/repositories/auth_repository.dart';
 import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
@@ -14,7 +12,9 @@ class VerifyOTP {
 
   ResultFutureVoid call({required VerifyOTPParams params}) async {
     return repository.verifyOTP(
-        verificationId: params.verificationId, otp: params.otp);
+      verificationId: params.verificationId,
+      otp: params.otp,
+    );
   }
 }
 
