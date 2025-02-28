@@ -34,23 +34,23 @@ Future<void> _loadApp() async {
   }
 }
 
-class BookDragon extends StatelessWidget {
+class BookDragon extends ConsumerWidget {
   factory BookDragon() => instance;
   const BookDragon._internal();
 
   static const BookDragon instance = BookDragon._internal();
 
   @override
-  Widget build(BuildContext context) {
-    final appRouter = DI.getIt<AppRouter>().router;
+  Widget build(BuildContext context, WidgetRef ref) {
+    final router = ref.watch(goRouterProvider);
 
     return ScreenUtilInit(
       designSize: const Size(375, 812),
       builder: (context, child) => MaterialApp.router(
         debugShowCheckedModeBanner: false,
-        routeInformationParser: appRouter.routeInformationParser,
-        routeInformationProvider: appRouter.routeInformationProvider,
-        routerDelegate: appRouter.routerDelegate,
+        routeInformationParser: router.routeInformationParser,
+        routeInformationProvider: router.routeInformationProvider,
+        routerDelegate: router.routerDelegate,
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
         localeResolutionCallback: (locale, supportedLocales) {

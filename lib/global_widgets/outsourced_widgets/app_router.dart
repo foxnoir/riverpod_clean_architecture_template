@@ -4,21 +4,16 @@ import 'package:book_dragon/core/router/transiton_page.dart';
 import 'package:book_dragon/features/auth/presentation/views/auth_screen.dart';
 import 'package:book_dragon/features/auth/presentation/views/otp_verification_screen.dart';
 import 'package:book_dragon/features/on_boarding/presentation/views/on_boarding_screen.dart';
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:injectable/injectable.dart';
 
-// GoRouter als Provider registrieren
-final goRouterProvider = Provider<GoRouter>((ref) {
-  return AppRouter.router;
-});
+/// The Flutter update has led to the fact that FirebaseCore cannot be mocked
+/// correctly or not in combination with GetIt. therefore approuter has been
+/// converted back to a global var
 
+@singleton
 class AppRouter {
-  static final GlobalKey<NavigatorState> navigatorKey =
-      GlobalKey<NavigatorState>();
-
-  static final GoRouter _router = GoRouter(
-    navigatorKey: navigatorKey,
+  late final GoRouter _router = GoRouter(
     initialLocation: AppRouteNames.onBoarding,
     errorBuilder: (context, state) => const PageNotFoundScreen(),
     routes: [
@@ -39,8 +34,12 @@ class AppRouter {
                 path: AppRouteNames.otp,
                 name: AppRouteNames.otp,
                 pageBuilder: (context, state) {
-                  final verificationId =
-                      state.uri.queryParameters['verification_Id'];
+                  String? verificationId;
+
+                  if (state.uri.queryParameters['verification_Id'] != null) {
+                    verificationId =
+                        state.uri.queryParameters['verification_Id'];
+                  }
 
                   return SlideTransitionPage(
                     key: state.pageKey,
@@ -57,9 +56,9 @@ class AppRouter {
     ],
   );
 
-  static GoRouter get router => _router;
+  GoRouter get router => _router;
 
-  static String get currentLocation {
+  String get currentLocation {
     final matches = _router.routerDelegate.currentConfiguration;
     return matches.isNotEmpty ? matches.last.matchedLocation : '/';
   }

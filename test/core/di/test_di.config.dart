@@ -1,3 +1,4 @@
+// dart format width=80
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 // **************************************************************************
@@ -10,7 +11,6 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:book_dragon/core/di/register_module.dart' as _i400;
 import 'package:book_dragon/core/log/logger.dart' as _i673;
-import 'package:book_dragon/core/router/app_router.dart' as _i193;
 import 'package:book_dragon/features/auth/data/data_sources/auth_remote_data_source.dart'
     as _i946;
 import 'package:book_dragon/features/auth/data/repositories/auth_repo_impl.dart'
@@ -59,7 +59,6 @@ extension GetItInjectableX on _i174.GetIt {
       preResolve: true,
     );
     gh.singleton<_i673.AppLogger>(() => _i673.AppLogger());
-    gh.singleton<_i193.AppRouter>(() => _i193.AppRouter());
     gh.lazySingleton<_i59.FirebaseAuth>(
         () => registerModule.provideFirebaseAuth());
     gh.lazySingleton<_i946.AuthRemoteDataSource>(() =>

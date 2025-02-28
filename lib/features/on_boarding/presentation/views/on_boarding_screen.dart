@@ -1,4 +1,3 @@
-import 'package:book_dragon/core/di/di.dart';
 import 'package:book_dragon/core/extensions/context_extensions.dart';
 import 'package:book_dragon/core/extensions/localization_extensions.dart';
 import 'package:book_dragon/core/router/app_router.dart';
@@ -11,27 +10,23 @@ import 'package:book_dragon/global_widgets/app_elevated_button.dart';
 import 'package:book_dragon/global_widgets/app_img_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class OnBoardingScreen extends StatefulWidget {
-  const OnBoardingScreen({
-    super.key,
-  });
+class OnBoardingScreen extends ConsumerStatefulWidget {
+  const OnBoardingScreen({super.key});
 
   @override
-  State<OnBoardingScreen> createState() => _OnBoardingScreenState();
+  ConsumerState<OnBoardingScreen> createState() => _OnBoardingScreenState();
 }
 
-class _OnBoardingScreenState extends State<OnBoardingScreen> {
+class _OnBoardingScreenState extends ConsumerState<OnBoardingScreen> {
   final pageController = PageController();
 
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    final router = ref.read(goRouterProvider);
+
     return Scaffold(
       body: AppImgContainer(
         image: AppImg.startBg,
@@ -40,15 +35,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
             PageView(
               controller: pageController,
               children: [
-                OnBoardingBody(
-                  content: OnBoardingContent.first(context),
-                ),
-                OnBoardingBody(
-                  content: OnBoardingContent.second(context),
-                ),
-                OnBoardingBody(
-                  content: OnBoardingContent.third(context),
-                ),
+                OnBoardingBody(content: OnBoardingContent.first(context)),
+                OnBoardingBody(content: OnBoardingContent.second(context)),
+                OnBoardingBody(content: OnBoardingContent.third(context)),
               ],
             ),
             Align(
@@ -79,7 +68,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 child: AppElevatedButton(
                   btnText: AppLocalizations.of(context).getStarted,
                   onPressed: () {
-                    DI.getIt<AppRouter>().router.goNamed(AppRouteNames.auth);
+                    router.goNamed(AppRouteNames.auth);
                   },
                 ),
               ),

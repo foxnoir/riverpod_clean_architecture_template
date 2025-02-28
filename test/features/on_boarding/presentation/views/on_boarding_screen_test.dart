@@ -1,31 +1,35 @@
 import 'package:book_dragon/core/router/app_router.dart';
 import 'package:book_dragon/features/auth/presentation/views/auth_screen.dart';
+import 'package:book_dragon/features/on_boarding/presentation/views/on_boarding_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../../../core/di/test_di.dart';
 import '../../../../test_helpers/localization_mock.dart';
-import '../../../../test_helpers/mocks_init.dart';
 
 void main() {
-  late AppRouter appRouter;
+  late GoRouter router;
 
-  setUp(() async {
-    await TestSettings.init();
-    appRouter = TestDI.getIt<AppRouter>();
+  setUpAll(() async {
+    router = AppRouter.router;
   });
 
   Future<void> pumpScreen(WidgetTester tester, GoRouter router) async {
     await tester.pumpWidget(
-      ScreenUtilInit(
-        child: MaterialApp.router(
-          routerConfig: router,
-          localizationsDelegates: AppLocalizations.localizationsDelegates,
-          supportedLocales: AppLocalizations.supportedLocales,
-          locale: const Locale('en'),
+      ProviderScope(
+        child: ScreenUtilInit(
+          designSize: const Size(375, 812),
+          builder: (context, child) => MaterialApp.router(
+            routerDelegate: router.routerDelegate,
+            routeInformationParser: router.routeInformationParser,
+            routeInformationProvider: router.routeInformationProvider,
+            localizationsDelegates: AppLocalizations.localizationsDelegates,
+            supportedLocales: AppLocalizations.supportedLocales,
+            locale: const Locale('en'),
+          ),
         ),
       ),
     );
@@ -34,21 +38,18 @@ void main() {
   group('OnBoardingScreen Navigation Tests', () {
     testWidgets('navigates to [AuthScreen] when [Get Started] is pressed',
         (tester) async {
-      // Arrange
       final appLocalizations = await getLocalizations(tester);
-      final router = appRouter.router;
-      await pumpScreen(tester, router);
 
-      // Act
+      await pumpScreen(tester, router);
+      await tester.pumpAndSettle();
+
+      expect(find.byType(OnBoardingScreen), findsOneWidget);
+
       final getStartedButton = find.text(appLocalizations.getStarted);
       await tester.ensureVisible(getStartedButton);
-      await tester.pumpAndSettle();
-
       await tester.tap(getStartedButton);
-      await tester.pump();
       await tester.pumpAndSettle();
 
-      /// Assert
       expect(find.byType(AuthScreen), findsOneWidget);
     });
   });
