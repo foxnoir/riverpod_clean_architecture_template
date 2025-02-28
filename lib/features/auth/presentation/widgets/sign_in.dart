@@ -9,6 +9,7 @@ import 'package:book_dragon/global_widgets/app_text_field.dart';
 import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -19,6 +20,9 @@ class SignIn extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final localization = AppLocalizations.of(context);
     final textStyle = context.theme.textTheme;
+
+    final phoneController = useTextEditingController();
+    final code = '+49';
 
     const verificationId = '1234';
 
@@ -42,52 +46,30 @@ class SignIn extends HookConsumerWidget {
           height: 16,
         ),
         AppTextField(
+          keyboardType: TextInputType.phone,
+          controller: phoneController,
+          readOnly: true,
           hintText: localization.pickYourCode,
-          suffixIcon: Padding(
-            padding: const EdgeInsets.only(
-              top: 8,
-            ),
-            child: GestureDetector(
-              onTap: () {
-                showCountryPicker(
-                  context: context,
-                  onSelect: (code) {
-                    // ref.read(countryCodeProvider.notifier).changeCountry(code);
-                  },
-                  countryListTheme: CountryListThemeData(
-                    backgroundColor: AppColor.darkBrown,
-                    bottomSheetHeight: MediaQuery.of(context).size.height * .6,
-                    borderRadius: const BorderRadius.vertical(
-                      top: Radius.circular(AppConst.kBorderRadius * 3),
-                    ),
-                    textStyle: textStyle.labelMedium,
-                    searchTextStyle: textStyle.labelMedium,
-                    inputDecoration: InputDecoration(
-                      border: const OutlineInputBorder(),
-                      labelText: localization.search,
-                      hintStyle: textStyle.labelMedium!.copyWith(
-                        color: AppColor.lightGrey,
-                      ),
-                      hintText: localization.search,
-                    ),
-                  ),
-                );
-              },
-              child: Padding(
-                padding: EdgeInsets.only(top: 1.5.h),
-                child: Text(
-                  localization.pickYourCode,
-                  // style: GoogleFonts.poppins(
-                  //   fontSize: code == null ? 13 : 18,
-                  //   color: code == null
-                  //       ? Colours.lightBlue
-                  //       : Colours.darkBackground,
-                  //   fontWeight:
-                  //       code == null ? FontWeight.w500 : FontWeight.bold,
-                  // ),
+          onTap: () {
+            showCountryPicker(
+              context: context,
+              onSelect: (code) {},
+              countryListTheme: CountryListThemeData(
+                bottomSheetHeight: MediaQuery.of(context).size.height * .6,
+                borderRadius: const BorderRadius.vertical(
+                  top: Radius.circular(12),
+                ),
+                inputDecoration: InputDecoration(
+                  border: const OutlineInputBorder(),
+                  labelText: localization.search,
+                  hintText: localization.search,
                 ),
               ),
-            ),
+            );
+          },
+          suffixIcon: const Padding(
+            padding: EdgeInsets.only(left: 14),
+            child: Icon(Icons.arrow_drop_down, color: AppColor.creme),
           ),
         ),
         const SizedBox(
@@ -143,9 +125,7 @@ class SignInOption extends StatelessWidget {
           btnText: localization.signIn,
           backgroundColor: AppColor.lightGreen,
           isEnabled: false,
-          onPressed: () {
-            // TODO(get-started-btn): signup
-          },
+          onPressed: () {},
         ),
       ],
     );

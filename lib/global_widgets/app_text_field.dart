@@ -10,6 +10,7 @@ class AppTextField extends StatelessWidget {
     this.hintText,
     this.keyboardType,
     this.hintStyle,
+    this.onTap,
   });
 
   final TextEditingController? controller;
@@ -19,19 +20,25 @@ class AppTextField extends StatelessWidget {
   final String? hintText;
   final TextStyle? hintStyle;
   final TextInputType? keyboardType;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      keyboardType: keyboardType,
-      controller: controller,
-      readOnly: readOnly,
-      onTapOutside: (_) {
-        FocusManager.instance.primaryFocus?.unfocus();
-      },
-      decoration: InputDecoration(
-        suffixIcon: suffixIcon,
-        hintText: hintText,
+    return GestureDetector(
+      onTap: onTap,
+      behavior: HitTestBehavior.opaque,
+      child: AbsorbPointer(
+        child: TextField(
+          keyboardType: keyboardType,
+          controller: controller,
+          readOnly: readOnly,
+          decoration: InputDecoration(
+            prefixIcon: prefixIcon,
+            suffixIcon: suffixIcon,
+            hintText: hintText,
+            hintStyle: hintStyle,
+          ),
+        ),
       ),
     );
   }

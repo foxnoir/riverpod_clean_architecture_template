@@ -2,6 +2,7 @@ import 'package:book_dragon/core/errors/exceptions.dart';
 import 'package:book_dragon/core/errors/firebase_exception_messages.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:injectable/injectable.dart';
 
 /// talks to server
 /// catchs exception
@@ -14,6 +15,7 @@ import 'package:flutter/material.dart';
 /// this error is replaced by an ApiException
 /// statusCode 505 then indicates an unexpected error
 /// throw ApiException(message: e.toString(), statusCode: 505);
+
 abstract class AuthRemoteDataSource {
   Future<void> sendOTP({
     required String phoneNumber,
@@ -29,6 +31,7 @@ abstract class AuthRemoteDataSource {
   });
 }
 
+@LazySingleton(as: AuthRemoteDataSource)
 class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   const AuthRemoteDataSourceImpl({
     required FirebaseAuth authClient,

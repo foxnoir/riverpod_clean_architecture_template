@@ -32,8 +32,9 @@ import 'package:book_dragon/features/on_boarding/domain/usecases/cache_first_tim
 import 'package:book_dragon/features/on_boarding/domain/usecases/check_if_user_is_first_timer.dart'
     as _i765;
 import 'package:book_dragon/features/storage/prefs.dart' as _i843;
+import 'package:firebase_auth/firebase_auth.dart' as _i59;
+import 'package:firebase_core/firebase_core.dart' as _i982;
 import 'package:get_it/get_it.dart' as _i174;
-import 'package:http/http.dart' as _i519;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
@@ -49,13 +50,20 @@ extension GetItInjectableX on _i174.GetIt {
       environmentFilter,
     );
     final registerModule = _$RegisterModule();
+    await gh.factoryAsync<_i982.FirebaseApp>(
+      () => registerModule.firebaseApp,
+      preResolve: true,
+    );
     await gh.factoryAsync<_i460.SharedPreferences>(
       () => registerModule.sharedPreferences,
       preResolve: true,
     );
     gh.singleton<_i673.AppLogger>(() => _i673.AppLogger());
     gh.singleton<_i193.AppRouter>(() => _i193.AppRouter());
-    gh.lazySingleton<_i519.Client>(() => registerModule.provideHttpClient());
+    gh.lazySingleton<_i59.FirebaseAuth>(
+        () => registerModule.provideFirebaseAuth());
+    gh.lazySingleton<_i946.AuthRemoteDataSource>(() =>
+        _i946.AuthRemoteDataSourceImpl(authClient: gh<_i59.FirebaseAuth>()));
     gh.lazySingleton<_i1060.AuthRepository>(
         () => _i874.AuthRepositoryImpl(gh<_i946.AuthRemoteDataSource>()));
     gh.factory<_i214.VerifyOTP>(

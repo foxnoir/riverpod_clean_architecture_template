@@ -26,7 +26,7 @@ ThemeData _buildTheme(ColorScheme colorScheme) {
     ),
     labelLarge: TextStyle(
       fontSize: 16.sp,
-      fontWeight: AppFontWeight.bold,
+      fontWeight: AppFontWeight.medium,
       color: colorScheme.onPrimary,
     ),
     labelMedium: TextStyle(
@@ -107,7 +107,10 @@ ThemeData _buildTheme(ColorScheme colorScheme) {
         fontWeight: AppFontWeight.medium,
         color: AppColor.creme,
       ),
-      contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+      contentPadding: const EdgeInsets.symmetric(
+        horizontal: 16,
+        vertical: 5,
+      ),
     ),
     snackBarTheme: SnackBarThemeData(
       backgroundColor: colorScheme.secondary,
