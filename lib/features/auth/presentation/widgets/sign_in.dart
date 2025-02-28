@@ -9,6 +9,7 @@ import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class SignIn extends HookConsumerWidget {
@@ -39,7 +40,24 @@ class SignIn extends HookConsumerWidget {
           onTap: () {
             showCountryPicker(
               context: context,
-              onSelect: (code) {},
+              onSelect: (code) {
+                // ref.read(countryCodeProvider.notifier).changeCountry(code);
+              },
+              countryListTheme: CountryListThemeData(
+                backgroundColor: AppColor.lightBrown,
+                bottomSheetHeight: 600.h,
+                borderRadius: const BorderRadius.vertical(
+                  top: Radius.circular(12),
+                ),
+                textStyle: textStyle.labelMedium!
+                    .copyWith(fontWeight: AppFontWeight.medium),
+                searchTextStyle: textStyle.labelMedium,
+                inputDecoration: InputDecoration(
+                  border: const OutlineInputBorder(),
+                  labelText: localization.search,
+                  hintStyle: textStyle.labelMedium,
+                ),
+              ),
             );
           },
           suffixIcon: const Padding(

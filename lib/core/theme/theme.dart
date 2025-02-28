@@ -96,6 +96,20 @@ ThemeData _buildTheme(ColorScheme colorScheme) {
       ),
     ),
     inputDecorationTheme: InputDecorationTheme(
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(AppConst.kBorderRadius),
+        borderSide: BorderSide(
+          color: colorScheme.tertiary,
+          width: 1,
+        ),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(AppConst.kBorderRadius),
+        borderSide: BorderSide(
+          color: colorScheme.primary,
+          width: 2,
+        ),
+      ),
       filled: true,
       fillColor: AppColor.darkBrown,
       border: OutlineInputBorder(
