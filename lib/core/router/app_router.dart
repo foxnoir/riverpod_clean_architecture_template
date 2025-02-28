@@ -25,7 +25,7 @@ class AppRouter {
       GoRoute(
         path: AppRouteNames.onBoarding,
         name: AppRouteNames.onBoarding,
-        builder: (context, state) => const PageNotFoundScreen(),
+        builder: (context, state) => const OnBoardingScreen(),
         routes: [
           GoRoute(
             path: AppRouteNames.auth,
