@@ -3,6 +3,7 @@ import 'package:book_dragon/core/extensions/localization_extensions.dart';
 import 'package:book_dragon/core/router/app_router.dart';
 import 'package:book_dragon/core/router/app_router_names.dart';
 import 'package:book_dragon/core/theme/consts.dart';
+import 'package:book_dragon/features/auth/presentation/providers/auth_providers.dart';
 import 'package:book_dragon/global_widgets/app_elevated_button.dart';
 import 'package:book_dragon/global_widgets/app_text_field.dart';
 import 'package:country_picker/country_picker.dart';
@@ -23,6 +24,7 @@ class SignIn extends HookConsumerWidget {
     final router = ref.read(goRouterProvider);
 
     const verificationId = '1234';
+    final code = ref.watch(countryCodeProvider);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -35,13 +37,13 @@ class SignIn extends HookConsumerWidget {
         AppTextField(
           keyboardType: TextInputType.phone,
           controller: phoneController,
-          readOnly: true,
-          hintText: localization.pickYourCode,
+          readOnly: code == null,
+          hintText: code == null ? localization.pickYourCode : '',
           onTap: () {
             showCountryPicker(
               context: context,
               onSelect: (code) {
-                // ref.read(countryCodeProvider.notifier).changeCountry(code);
+                ref.read(countryCodeProvider.notifier).changeCountry(code);
               },
               countryListTheme: CountryListThemeData(
                 backgroundColor: AppColor.lightBrown,
@@ -60,9 +62,25 @@ class SignIn extends HookConsumerWidget {
               ),
             );
           },
+          prefixIcon: code != null
+              ? Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 12),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      '${code.flagEmoji} +${code.phoneCode} ',
+                      style: textStyle.headlineSmall!
+                          .copyWith(color: AppColor.creme),
+                    ),
+                  ),
+                )
+              : null,
           suffixIcon: const Padding(
-            padding: EdgeInsets.only(left: 14),
-            child: Icon(Icons.arrow_drop_down, color: AppColor.creme),
+            padding: EdgeInsets.symmetric(horizontal: 8),
+            child: Align(
+              alignment: Alignment.centerRight,
+              child: Icon(Icons.arrow_drop_down, color: AppColor.creme),
+            ),
           ),
         ),
         const SizedBox(height: 24),

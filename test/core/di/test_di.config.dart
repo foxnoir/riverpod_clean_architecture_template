@@ -32,6 +32,8 @@ import 'package:book_dragon/features/on_boarding/domain/usecases/cache_first_tim
 import 'package:book_dragon/features/on_boarding/domain/usecases/check_if_user_is_first_timer.dart'
     as _i765;
 import 'package:book_dragon/features/storage/prefs.dart' as _i843;
+import 'package:book_dragon/global_widgets/outsourced_widgets/app_router.dart'
+    as _i320;
 import 'package:firebase_auth/firebase_auth.dart' as _i59;
 import 'package:firebase_core/firebase_core.dart' as _i982;
 import 'package:get_it/get_it.dart' as _i174;
@@ -58,6 +60,7 @@ extension GetItInjectableX on _i174.GetIt {
       () => registerModule.sharedPreferences,
       preResolve: true,
     );
+    gh.singleton<_i320.AppRouter>(() => _i320.AppRouter());
     gh.singleton<_i673.AppLogger>(() => _i673.AppLogger());
     gh.lazySingleton<_i59.FirebaseAuth>(
         () => registerModule.provideFirebaseAuth());

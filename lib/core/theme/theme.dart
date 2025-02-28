@@ -100,7 +100,6 @@ ThemeData _buildTheme(ColorScheme colorScheme) {
         borderRadius: BorderRadius.circular(AppConst.kBorderRadius),
         borderSide: BorderSide(
           color: colorScheme.tertiary,
-          width: 1,
         ),
       ),
       focusedBorder: OutlineInputBorder(
@@ -116,11 +115,7 @@ ThemeData _buildTheme(ColorScheme colorScheme) {
         borderRadius: BorderRadius.circular(AppConst.kBorderRadius),
         borderSide: BorderSide.none,
       ),
-      hintStyle: TextStyle(
-        fontSize: 15.sp,
-        fontWeight: AppFontWeight.medium,
-        color: AppColor.creme,
-      ),
+      hintStyle: textTheme.headlineSmall!.copyWith(color: AppColor.creme),
       contentPadding: const EdgeInsets.symmetric(
         horizontal: 16,
         vertical: 5,

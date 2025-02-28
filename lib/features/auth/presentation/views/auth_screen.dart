@@ -4,6 +4,7 @@ import 'package:book_dragon/features/auth/presentation/widgets/sign_in.dart';
 import 'package:book_dragon/features/auth/presentation/widgets/signup.dart';
 import 'package:book_dragon/global_widgets/app_img_container.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AuthScreen extends StatefulWidget {
   const AuthScreen({
@@ -35,9 +36,7 @@ class _AuthScreenState extends State<AuthScreen> {
                 child: AnimatedContainer(
                   duration: const Duration(milliseconds: 500),
                   curve: Curves.ease,
-                  height: signIn
-                      ? MediaQuery.of(context).size.height * 0.5
-                      : MediaQuery.of(context).size.height * 0.3,
+                  height: signIn ? 400.h : 300.h,
                   child: CustomPaint(
                     painter: AuthCurvePainter(outterCurve: signIn),
                     child: Container(
@@ -67,9 +66,7 @@ class _AuthScreenState extends State<AuthScreen> {
                 child: AnimatedContainer(
                   duration: const Duration(milliseconds: 500),
                   curve: Curves.ease,
-                  height: signIn
-                      ? MediaQuery.of(context).size.height * 0.4
-                      : MediaQuery.of(context).size.height * 0.6,
+                  height: signIn ? 350.h : 550.h,
                   child: Container(
                     color: Colors.transparent,
                     padding: EdgeInsets.only(top: signIn ? 55 : 0),
