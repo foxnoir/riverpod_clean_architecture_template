@@ -17,19 +17,28 @@ class PageNotFoundScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(AppLocalizations.of(context).pageNotFoundTitle),
       ),
-      body: Stack(
-        children: [
-          const AppImgContainer(image: AppImg.notFound),
-          Center(
-            child: Padding(
-              padding: EdgeInsets.only(top: 410.w),
-              child: AppElevatedButton(
-                btnText: AppLocalizations.of(context).goToHomepage,
-                onPressed: () {},
+      body: AppImgContainer(
+        image: AppImg.startBg,
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 20, bottom: 20),
+              child: Image.asset(AppImg.notFound, height: 510.w),
+            ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 50),
+                child: AppElevatedButton(
+                  btnText: AppLocalizations.of(context).goToHomepage,
+                  onPressed: () {
+                    // router.goNamed(AppRouteNames.auth);
+                  },
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
