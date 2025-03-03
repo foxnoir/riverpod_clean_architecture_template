@@ -24,21 +24,16 @@ class AppTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      behavior: HitTestBehavior.opaque,
-      child: AbsorbPointer(
-        child: TextField(
-          keyboardType: keyboardType,
-          controller: controller,
-          readOnly: readOnly,
-          decoration: InputDecoration(
-            prefixIcon: prefixIcon,
-            suffixIcon: suffixIcon,
-            hintText: hintText,
-            hintStyle: hintStyle,
-          ),
-        ),
+    return TextField(
+      keyboardType: keyboardType,
+      controller: controller,
+      readOnly: readOnly, // Steuerung der Interaktion über readOnly
+      onTap: onTap, // Öffnet Picker, wenn nötig
+      decoration: InputDecoration(
+        prefixIcon: prefixIcon,
+        suffixIcon: suffixIcon,
+        hintText: hintText,
+        hintStyle: hintStyle,
       ),
     );
   }

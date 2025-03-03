@@ -1,98 +1,39 @@
-import 'package:book_dragon/core/extensions/localization_extensions.dart';
-import 'package:book_dragon/core/theme/media_consts.dart';
-import 'package:book_dragon/features/auth/presentation/widgets/auth_curve_painter.dart';
-import 'package:book_dragon/features/auth/presentation/widgets/sign_in.dart';
-import 'package:book_dragon/features/auth/presentation/widgets/signup.dart';
-import 'package:book_dragon/global_widgets/app_img_container.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class AuthScreen extends StatefulWidget {
-  const AuthScreen({
+class AppTextField extends StatelessWidget {
+  const AppTextField({
     super.key,
+    this.readOnly = false,
+    this.controller,
+    this.prefixIcon,
+    this.suffixIcon,
+    this.hintText,
+    this.keyboardType,
+    this.hintStyle,
+    this.onTap,
   });
 
-  @override
-  State<AuthScreen> createState() => _AuthScreenState();
-}
-
-class _AuthScreenState extends State<AuthScreen> {
-  bool signIn = true;
+  final TextEditingController? controller;
+  final bool readOnly;
+  final Widget? prefixIcon;
+  final Widget? suffixIcon;
+  final String? hintText;
+  final TextStyle? hintStyle;
+  final TextInputType? keyboardType;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(AppLocalizations.of(context).authentication),
-      ),
-      body: AppImgContainer(
-        image: AppImg.startBg,
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              GestureDetector(
-                onTap: () {
-                  setState(() {
-                    signIn = true;
-                  });
-                },
-                child: AnimatedContainer(
-                  duration: const Duration(milliseconds: 500),
-                  curve: Curves.ease,
-                  height: signIn ? 400.h : 300.h,
-                  child: CustomPaint(
-                    painter: AuthCurvePainter(outterCurve: signIn),
-                    child: Container(
-                      padding: EdgeInsets.only(bottom: signIn ? 0 : 55),
-                      child: Center(
-                        child: SingleChildScrollView(
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 32,
-                              vertical: 16,
-                            ),
-                            child:
-                                signIn ? const SignIn() : const SignInOption(),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  setState(() {
-                    signIn = false;
-                  });
-                },
-                child: AnimatedContainer(
-                  duration: const Duration(milliseconds: 500),
-                  curve: Curves.ease,
-                  height: signIn ? 350.h : 550.h,
-                  child: Container(
-                    color: Colors.transparent,
-                    padding: EdgeInsets.only(top: signIn ? 55 : 0),
-                    child: Center(
-                      child: SingleChildScrollView(
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 32,
-                            vertical: 16,
-                          ),
-                          child:
-                              !signIn ? const SignUp() : const SignUpOption(),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
+    return TextField(
+      keyboardType: keyboardType,
+      controller: controller,
+      readOnly: readOnly,
+      onTap: onTap,
+      decoration: InputDecoration(
+        prefixIcon: prefixIcon,
+        suffixIcon: suffixIcon,
+        hintText: hintText,
+        hintStyle: hintStyle,
       ),
     );
   }
