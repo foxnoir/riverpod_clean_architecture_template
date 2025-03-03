@@ -1,5 +1,7 @@
 import 'package:book_dragon/core/extensions/context_extensions.dart';
 import 'package:book_dragon/core/extensions/localization_extensions.dart';
+import 'package:book_dragon/core/router/app_router.dart';
+import 'package:book_dragon/core/router/app_router_names.dart';
 import 'package:book_dragon/core/theme/consts.dart';
 import 'package:book_dragon/features/auth/presentation/providers/auth_providers.dart';
 import 'package:book_dragon/global_widgets/app_elevated_button.dart';
@@ -20,6 +22,8 @@ class SignIn extends HookConsumerWidget {
     final textStyle = context.theme.textTheme;
     final phoneController = useTextEditingController();
 
+    final router = ref.read(goRouterProvider);
+    const verificationId = '1234';
     final code = ref.watch(countryCodeProvider);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -77,8 +81,21 @@ class SignIn extends HookConsumerWidget {
             ),
           ),
         ),
-
-        // ),
+        const SizedBox(height: 24),
+        SizedBox(
+          width: 210,
+          child: AppElevatedButton(
+            btnText: localization.sendCode,
+            onPressed: () {
+              router.pushNamed(
+                AppRouteNames.otp,
+                queryParameters: {
+                  'verification_Id': verificationId,
+                },
+              );
+            },
+          ),
+        ),
       ],
     );
   }
