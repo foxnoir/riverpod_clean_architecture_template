@@ -1,3 +1,4 @@
+import 'package:book_dragon/core/theme/consts.dart';
 import 'package:book_dragon/core/theme/media_consts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,12 +9,14 @@ class AppElevatedButton extends StatelessWidget {
     required this.btnText,
     this.isEnabled = true,
     this.backgroundColor,
+    this.isLoading = false,
     super.key,
   });
 
   final VoidCallback? onPressed;
   final String btnText;
   final bool isEnabled;
+  final bool isLoading;
   final Color? backgroundColor;
 
   @override
@@ -21,12 +24,13 @@ class AppElevatedButton extends StatelessWidget {
     final theme = Theme.of(context);
 
     return AbsorbPointer(
-      absorbing: !isEnabled,
+      absorbing:
+          !isEnabled || isLoading, // Deaktiviert Button während isLoading
       child: SizedBox(
         width: 210.w,
         height: 44.w,
         child: ElevatedButton(
-          onPressed: onPressed,
+          onPressed: isLoading ? null : onPressed,
           style: ElevatedButton.styleFrom(
             backgroundColor: backgroundColor ??
                 theme.elevatedButtonTheme.style?.backgroundColor?.resolve({}),
@@ -34,16 +38,27 @@ class AppElevatedButton extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                btnText,
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(width: 8.w),
-              Image.asset(
-                AppImg.btnIcon,
-                fit: BoxFit.cover,
-                width: 20.w,
-              ),
+              if (isLoading)
+                SizedBox(
+                  width: 20.w,
+                  height: 20.w,
+                  child: const CircularProgressIndicator(
+                    strokeWidth: 2,
+                    valueColor: AlwaysStoppedAnimation<Color>(AppColor.creme),
+                  ),
+                )
+              else
+                Text(
+                  btnText,
+                  textAlign: TextAlign.center,
+                ),
+              if (!isLoading) SizedBox(width: 8.w),
+              if (!isLoading)
+                Image.asset(
+                  AppImg.btnIcon,
+                  fit: BoxFit.cover,
+                  width: 20.w,
+                ),
             ],
           ),
         ),
