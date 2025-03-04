@@ -31,8 +31,6 @@ class AuthController extends _$AuthController {
     });
   }
 
-  // test
-
   Future<void> verifyOTP({
     required String verificationId,
     required String otp,
