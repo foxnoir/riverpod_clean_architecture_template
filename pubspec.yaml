@@ -60,6 +60,7 @@ dev_dependencies:
   json_serializable: ^6.6.1
   dart_mappable_builder: ^4.3.0
   custom_lint: ^0.7.0
+  freezed: ^3.0.3
 
 flutter_icons:
   ios: true

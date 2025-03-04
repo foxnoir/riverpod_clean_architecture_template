@@ -1,3 +1,4 @@
+import 'package:book_dragon/core/utils/type_defs.dart';
 import 'package:book_dragon/features/auth/domain/repositories/auth_repository.dart';
 import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
@@ -9,8 +10,8 @@ class SendOTP {
   SendOTP({required this.repository});
   final AuthRepository repository;
 
-  Future<void> call({required SendOTPParams params}) async {
-    await repository.sendOTP(phoneNumber: params.phoneNumber);
+  ResultFutureVoid call({required SendOTPParams params}) async {
+    return repository.sendOTP(phoneNumber: params.phoneNumber);
   }
 }
 
