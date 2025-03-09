@@ -293,7 +293,7 @@ If you were to use 2 different status management solutions at the same time, you
 
 #### 1. <ins>State Managment here with: [Riverpod](https://pub.dev/packages/flutter_riverpod)</ins>
 
-`Riverpod`depends on `usecases`.
+`Riverpod` file(s) depend(s) on `usecases`.
 
 Implement riverpod_files.
 Write test for riverpod_files.
@@ -513,7 +513,7 @@ class CounterScreen extends ConsumerWidget {
         ),
       ),
     );
-  }
+  }pp
 }
 ```
 ----------------------------------------------------------
@@ -1043,7 +1043,7 @@ flutter-app/
 │ │ └── presentation/
 │ │ │ ├── views/
 │ │ │ ├── widgets/
-│ │ │ └── bloc/
+│ │ │ └── controller(managing riverpod providers)/
 │ │ └── navigation/
 │ │ └── storage/
 │ └── global_widgets
