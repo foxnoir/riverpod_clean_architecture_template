@@ -27,7 +27,7 @@ class PageNotFoundScreen extends StatelessWidget {
               ),
               const SizedBox(height: 20),
               Padding(
-                padding: const EdgeInsets.only(bottom: 60),
+                padding: const EdgeInsets.all(50),
                 child: AppElevatedButton(
                   btnText: AppLocalizations.of(context).goToHomepage,
                   onPressed: () {
