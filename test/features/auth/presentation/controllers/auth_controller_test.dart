@@ -1,10 +1,8 @@
+// Unit Test file for auth_controller.dartimport 'package:book_dragon/features/auth/domain/usecases/send_otp.dart';
 import 'package:book_dragon/features/auth/domain/usecases/send_otp.dart';
-import 'package:book_dragon/core/errors/failures.dart';
 import 'package:book_dragon/features/auth/domain/usecases/verify_otp.dart';
 import 'package:book_dragon/features/auth/presentation/controllers/auth_controller.dart';
-import 'package:country_picker/country_picker.dart';
 import 'package:dartz/dartz.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:riverpod/riverpod.dart';

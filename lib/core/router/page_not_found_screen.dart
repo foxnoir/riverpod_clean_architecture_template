@@ -19,7 +19,7 @@ class PageNotFoundScreen extends StatelessWidget {
         image: AppImg.startBg,
         child: SingleChildScrollView(
           child: Column(
-            mainAxisSize: MainAxisSize.min, // Verhindert Überlauf
+            mainAxisSize: MainAxisSize.min,
             children: [
               Padding(
                 padding: const EdgeInsets.only(top: 20, bottom: 20),
@@ -27,7 +27,7 @@ class PageNotFoundScreen extends StatelessWidget {
               ),
               const SizedBox(height: 20),
               Padding(
-                padding: const EdgeInsets.only(bottom: 50),
+                padding: const EdgeInsets.only(bottom: 60),
                 child: AppElevatedButton(
                   btnText: AppLocalizations.of(context).goToHomepage,
                   onPressed: () {
