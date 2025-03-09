@@ -129,7 +129,7 @@
         <li><a href="#testing-futurevoid-methods-in-dartflutter">Testing Future<void> Methods in Dart/Flutter</a></li>
      </ul>
     </li>
-    <li><a href="#acknowledgments">Acknowledgments</a>
+    <li><a href="#additional-knowledge">Additional knowledge</a>
       <ul>
         <li><a href="#go-router">Go Router</a></li>
      </ul>
@@ -1229,7 +1229,7 @@ expect(
 
 ---
 
-## **Acknowledgments**
+## **Additional knowledge**
 
 ### [GoRouter](https://pub.dev/packages/go_router)
 
