@@ -10,7 +10,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'auth_controllers.g.dart';
+part 'auth_controller.g.dart';
 
 @riverpod
 class AuthController extends _$AuthController {

@@ -2,7 +2,7 @@ import 'package:book_dragon/core/extensions/context_extensions.dart';
 import 'package:book_dragon/core/extensions/localization_extensions.dart';
 import 'package:book_dragon/core/router/app_router.dart';
 import 'package:book_dragon/core/theme/consts.dart';
-import 'package:book_dragon/features/auth/presentation/controllers/auth_controllers.dart';
+import 'package:book_dragon/features/auth/presentation/controllers/auth_controller.dart';
 import 'package:book_dragon/global_widgets/app_elevated_button.dart';
 import 'package:book_dragon/global_widgets/app_text_field.dart';
 import 'package:country_picker/country_picker.dart';
