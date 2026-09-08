@@ -2,25 +2,47 @@
 
 <!-- Top Links Bar -->
 
-[![LinkedIn][linkedin-shield]][linkedin-url]
-[![X][x-shield]][x-url]
-[![Instagram][instagram-shield]][instagram-url]
+[![LinkedIn](assets/badges/linkedin.svg)](https://www.linkedin.com/in/tanja-polz-5636401a5/)
+[![X](assets/badges/x.svg)](https://twitter.com/_foxnoir_?lang=de)
+[![Instagram](assets/badges/instagram.svg)](https://www.instagram.com/codeincouture/)
 
 <!-- PROJECT LOGO -->
 <br />
 
 <div align="center">
-  <img src="images/logo.png" alt="Logo" width="80" height="80">
+  <img src="images/logo.png" alt="Logo" width="179" height="179">
   <h1 align="center">TDD and clean architecture</h1>
-
-  <p align="left">
+  <p>
      Riverpod and clean architecture template app
   </p>
-  
-  <p align="left">
+  <p>
     <a href="https://github.com/foxnoir/riverpod_clean_architecture_template/tree/develop/lib"><strong>Explore the project »</strong></a>
-    <br/>
   </p>
+</div>
+
+---
+
+<div align="left">
+
+[![Flutter](assets/badges/flutter.svg)](https://flutter.dev/)
+[![Dart](assets/badges/dart.svg)](https://dart.dev/)
+[![Riverpod](assets/badges/riverpod.svg)](https://pub.dev/packages/flutter_riverpod)
+[![Riverpod Lint](assets/badges/riverpod_lint.svg)](https://pub.dev/packages/riverpod_lint)
+[![GoRouter](assets/badges/gorouter.svg)](https://pub.dev/packages/go_router)
+[![Flutter Localizations](assets/badges/flutter_localizations.svg)](https://docs.flutter.dev/ui/internationalization)
+[![Intl](assets/badges/intl.svg)](https://pub.dev/packages/intl)
+[![Very Good Analysis](assets/badges/very_good.svg)](https://pub.dev/packages/very_good_analysis)
+[![iOS](assets/badges/ios.svg)](https://developer.apple.com/ios/)
+[![Firebase](assets/badges/firebase.svg)](https://firebase.google.com/)
+[![Dartz](assets/badges/dartz.svg)](https://pub.dev/packages/dartz)
+[![Equatable](assets/badges/equatable.svg)](https://pub.dev/packages/equatable)
+[![GetIt](assets/badges/get_it.svg)](https://pub.dev/packages/get_it)
+[![Injectable](assets/badges/injectable.svg)](https://pub.dev/packages/injectable)
+[![Dart Mappable](assets/badges/mappable.svg)](https://pub.dev/packages/dart_mappable)
+[![HTTP](assets/badges/http.svg)](https://pub.dev/packages/http)
+[![Dio](assets/badges/dio.svg)](https://pub.dev/packages/dio)
+[![Mocktail](assets/badges/mocktail.svg)](https://pub.dev/packages/mocktail)
+
 </div>
 
 <details>
@@ -30,11 +52,7 @@
       <a href="#clean-architecture-roadmap">Clean Architecture Roadmap</a>
       <ul>
         <li><a href="#domain-layer">Domain Layer</a></li>
-      </ul>
-      <ul>
         <li><a href="#data-layer">Data Layer</a></li>
-      </ul>
-      <ul>
         <li><a href="#presentation-layer">Presentation Layer</a></li>
       </ul>
     </li>
@@ -42,14 +60,8 @@
       <a href="#riverpod">Riverpod</a>
       <ul>
         <li><a href="#why-riverpod-instead-of-provider">Why Riverpod instead of Provider</a></li>
-      </ul>
-      <ul>
         <li><a href="#core-riverpod-provider">Core Riverpod Provider</a></li>
-      </ul>
-      <ul>
         <li><a href="#summary">Summary</a></li>
-      </ul>
-      <ul>
         <li><a href="#conclusion">Conclusion</a></li>
       </ul>
     </li>
@@ -57,20 +69,10 @@
       <a href="#riverpod-hooks">Riverpod Hooks</a>
       <ul>
         <li><a href="#when-are-hooks-useful-in-riverpod">When Are Hooks Useful in Riverpod?</a></li>
-      </ul>
-      <ul>
         <li><a href="#when-is-hookconsumerwidget-necessary">When Is HookConsumerWidget Necessary?</a></li>
-      </ul>
-      <ul>
         <li><a href="#important-riverpod-hooks">Important Riverpod Hooks</a></li>
-      </ul>
-      <ul>
-        <li><a href="#when-shoukd-you-use-consumerstatefulwidget">When Should You Use ConsumerStatefulWidget?</a></li>
-      </ul>
-      <ul>
+        <li><a href="#when-should-you-use-consumerstatefulwidget">When Should You Use ConsumerStatefulWidget?</a></li>
         <li><a href="#when-is-consumerstatefulwidget-required">When Is ConsumerStatefulWidget Required?</a></li>
-      </ul>
-      <ul>
         <li><a href="#summary">summary</a></li>
       </ul>
     </li>
@@ -78,39 +80,39 @@
       <a href="#style-guide">Style Guide</a>
       <ul>
         <li><a href="#color-palette">Color Palette</a></li>
-      </ul>
-      <ul>
         <li><a href="#fonts">Fonts</a></li>
-      </ul>
-      <ul>
         <li><a href="#icons">Icons</a></li>
-      </ul>
-      <ul>
         <li><a href="#final-layout">Final Layout</a></li>
       </ul>
     </li>
-    <li><a href="#app-demonstration">App Demonstration</a>
+    <li>
+      <a href="#app-demonstration">App Demonstration</a>
       <ul>
         <li><a href="#happy-case">Happy Case</a></li>
         <li><a href="#error-handling">Error Handling</a></li>
       </ul>
     </li>
-    <li><a href="#tech-stack">Tech Stack</a></li>
+    <li>
+      <a href="#tech-stack">Tech Stack</a>
       <ul>
         <li><a href="#build-with">Build With</a></li>
-      </ul>
-    <ul>
         <li><a href="#most-important-packages-and-tools-used">Most important Packages and Tools used</a></li>
       </ul>
-    <li><a href="#getting-started">Getting Started</a></li>
-        <ul>
+    </li>
+    <li><a href="#badges">Badges</a></li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
         <li><a href="#generate-launcher-icon">Generate Launcher Icon</a></li>
         <li><a href="#generate-splash-screen">Generate Splash Screen</a></li>
       </ul>
-    <li><a href="#app-architecture-and-folder-structure">App Architecture and Folder Structure</a>
+    </li>
+    <li>
+      <a href="#app-architecture-and-folder-structure">App Architecture and Folder Structure</a>
       <ul>
         <li><a href="#feature-first-approach">Feature-First Approach</a></li>
-        <li><a href="#explanation">Explanation</a>
+        <li>
+          <a href="#explanation">Explanation</a>
           <ul>
             <li><a href="#data">Data</a></li>
             <li><a href="#domain">Domain</a></li>
@@ -127,12 +129,13 @@
       <a href="#testing-tips">Testing Tips</a>
       <ul>
         <li><a href="#testing-futurevoid-methods-in-dartflutter">Testing Future<void> Methods in Dart/Flutter</a></li>
-     </ul>
+      </ul>
     </li>
-    <li><a href="#additional-knowledge">Additional knowledge</a>
+    <li>
+      <a href="#additional-knowledge">Additional knowledge</a>
       <ul>
-        <li><a href="#go-router">Go Router</a></li>
-     </ul>
+        <li><a href="#gorouter">Go Router</a></li>
+      </ul>
     </li>
     <li><a href="#sources">Sourcs</a></li>
   </ol>
@@ -922,25 +925,65 @@ Riverpod Hooks make **state management cleaner, more modular, and more efficient
 
 ### Build With
 
-- [![Flutter][flutter]][flutter-url]
-- [![Dart][dart]][dart-url]
-- [![Firebase][firebase]][firebase-url]
+- [![Flutter](assets/badges/flutter.svg)](https://flutter.dev/)
+- [![Dart](assets/badges/dart.svg)](https://dart.dev/)
+- [![Firebase](assets/badges/firebase.svg)](https://firebase.google.com/)
 
 ### Most Important Packages and Tools used
 
-[![Dartz][dartz]][dartz-url]
-[![Dio][dio]][dio-url]
-[![Equatable][equatable]][equatable-url]
-[![Flutter Localizations][flutter-localizations]][flutter-localizations-url]
-[![GetIt][get-it]][get-it-url]
-[![GoRouter][gorouter]][gorouter-url]
-[![HTTP][http]][http-url]
-[![Injectable][injectable]][injectable-url]
-[![Intl][intl]][intl-url]
-[![Mappable][mappable]][mappable-url]
-[![Mocktail][mocktail]][mocktail-url]
-[![Riverpod][riverpod]][riverpod-url]
-[![Very Good Analysis][very-good]][very-good-url]
+[![Dartz](assets/badges/dartz.svg)](https://pub.dev/packages/dartz)
+[![Dio](assets/badges/dio.svg)](https://pub.dev/packages/dio)
+[![Equatable](assets/badges/equatable.svg)](https://pub.dev/packages/equatable)
+[![Flutter Localizations](assets/badges/flutter_localizations.svg)](https://docs.flutter.dev/ui/internationalization)
+[![GetIt](assets/badges/get_it.svg)](https://pub.dev/packages/get_it)
+[![GoRouter](assets/badges/gorouter.svg)](https://pub.dev/packages/go_router)
+[![HTTP](assets/badges/http.svg)](https://pub.dev/packages/http)
+[![Injectable](assets/badges/injectable.svg)](https://pub.dev/packages/injectable)
+[![Intl](assets/badges/intl.svg)](https://pub.dev/packages/intl)
+[![Dart Mappable](assets/badges/mappable.svg)](https://pub.dev/packages/dart_mappable)
+[![Mocktail](assets/badges/mocktail.svg)](https://pub.dev/packages/mocktail)
+[![Riverpod](assets/badges/riverpod.svg)](https://pub.dev/packages/flutter_riverpod)
+[![Very Good Analysis](assets/badges/very_good.svg)](https://pub.dev/packages/very_good_analysis)
+
+<p align="right"><a href="#readme-top">back to top</a></p>
+
+---
+
+## Badges
+
+Tech-stack and social badges live in [`assets/badges/`](assets/badges/). After changing labels or colors:
+
+```
+python3 assets/badges/generate.py
+```
+
+Target URLs sit **on the badge line** (`[![Flutter](assets/badges/flutter.svg)](https://flutter.dev/)`). GitHub cannot import another file into a README, so there is no footer of `[flutter-url]:` refs. The href list is [`assets/badges/links.json`](assets/badges/links.json) when you add a badge.
+
+Every badge is a vertical dark → mid → light gradient (same contrast as Instagram). The mid stop is the brand or playground color. Official colors stay official, except black — it is hard to see. Everything else uses purple, blue, turquoise, pink, or green — not black, orange, red, or yellow.
+
+| File | Color (dark → mid → light) | Why |
+| --- | --- | --- |
+| `flutter.svg` | `#012F55` → `#02569B` → `#7BA7CB` | official Flutter |
+| `dart.svg` | `#01406B` → `#0175C2` → `#7BB7DF` | official Dart |
+| `riverpod.svg` | `#4C3469` → `#8B5FBF` → `#C3ACDE` | app purple |
+| `riverpod_lint.svg` | `#343A5C` → `#5E6AA8` → `#ABB2D2` | blue-violet |
+| `gorouter.svg` | `#194C4A` → `#2D8A86` → `#92C2C0` | teal |
+| `flutter_localizations.svg` | `#012F55` → `#02569B` → `#7BA7CB` | official Flutter |
+| `intl.svg` | `#43345C` → `#7A5EA8` → `#BAABD2` | purple |
+| `very_good.svg` | `#62184B` → `#B22C89` → `#D791C2` | Very Good Ventures |
+| `ios.svg` | `#2A656C` → `#4DB8C4` → `#A2DAE0` | pastel turquoise |
+| `linkedin.svg` | `#06386B` → `#0A66C2` → `#80AFDF` | official LinkedIn |
+| `instagram.svg` | `#4C3469` → `#8B5FBF` → `#C3ACDE` | lilac |
+| `x.svg` | `#456576` → `#7EB8D6` → `#BCDAEA` | pastel light blue |
+| `firebase.svg` | `#02557E` → `#039BE5` → `#7CCBF1` | Firebase blue (replaces yellow/orange) |
+| `dartz.svg` | `#0F2B46` → `#1C4E80` → `#89A3BD` | deep blue |
+| `dio.svg` | `#17564F` → `#2A9D8F` → `#90CCC5` | turquoise (replaces orange) |
+| `equatable.svg` | `#294D3D` → `#4A8C6F` → `#A1C3B4` | green (replaces lime/yellow) |
+| `get_it.svg` | `#004370` → `#007ACC` → `#7ABAE4` | blue |
+| `http.svg` | `#343A5C` → `#5E6AA8` → `#ABB2D2` | blue-violet |
+| `injectable.svg` | `#194C4A` → `#2D8A86` → `#92C2C0` | teal |
+| `mappable.svg` | `#0E4349` → `#1A7A84` → `#88BABF` | turquoise |
+| `mocktail.svg` | `#43345C` → `#7A5EA8` → `#BAABD2` | purple |
 
 <p align="right"><a href="#readme-top">back to top</a></p>
 
@@ -1373,57 +1416,3 @@ context.replace('/newPage');
 
 <p align="right"><a href="#readme-top">back to top</a></p>
 
----
-
-[bloc]: https://img.shields.io/badge/Riverpod-8B0000.svg?style=for-the-badge&logo=bloc&logoColor=white
-[bloc-url]: https://pub.dev/packages/bloc
-[dart]: https://img.shields.io/badge/Dart-%230175C2.svg?style=for-the-badge&logo=dart&logoColor=white
-[dart-url]: https://dart.dev/
-[dio]: https://img.shields.io/badge/Dio-FE5000.svg?style=for-the-badge&logo=internet-explorer&logoColor=white
-[dio-url]: https://pub.dev/packages/dio
-[dartz]: https://img.shields.io/badge/Dartz-1C4E80.svg?style=for-the-badge&logo=dart&logoColor=white
-[dartz-url]: https://pub.dev/packages/dartz
-[equatable]: https://img.shields.io/badge/Equatable-32CD32.svg?style=for-the-badge&logo=equatable&logoColor=white
-[equatable-url]: https://pub.dev/packages/equatable
-[firebase]: https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white
-[firebase-url]: https://firebase.google.com/
-[flutter]: https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&logo=flutter&logoColor=white
-[flutter-url]: https://flutter.dev/
-[flutter-bloc]: https://img.shields.io/badge/Flutter%20Riverpod-2E86C1.svg?style=for-the-badge&logo=flutter&logoColor=white
-[flutter-bloc-url]: https://pub.dev/packages/flutter_bloc
-[flutter-localizations]: https://img.shields.io/badge/Flutter%20Localizations-0170F3.svg?style=for-the-badge&logo=flutter&logoColor=white
-[flutter-localizations-url]: https://flutter.dev/docs/development/accessibility-and-localization/internationalization
-[flutter-secure-storage]: https://img.shields.io/badge/Flutter%20Secure%20Storage-2F4F4F.svg?style=for-the-badge&logo=lock&logoColor=white
-[flutter-secure-storage-url]: https://pub.dev/packages/flutter_secure_storage
-[get-it]: https://img.shields.io/badge/GetIt-007ACC.svg?style=for-the-badge&logo=getit&logoColor=white
-[get-it-url]: https://pub.dev/packages/get_it
-[gorouter]: https://img.shields.io/badge/GoRouter-0082FC.svg?style=for-the-badge&logo=flutter&logoColor=white
-[gorouter-url]: https://pub.dev/packages/go_router
-[http]: https://img.shields.io/badge/HTTP-007BFF.svg?style=for-the-badge&logo=http&logoColor=white
-[http-url]: https://pub.dev/packages/http
-[hive]: https://img.shields.io/badge/Hive-FFB300.svg?style=for-the-badge&logo=hive&logoColor=white
-[hive-url]: https://pub.dev/packages/hive
-[injectable]: https://img.shields.io/badge/Injectable-009688.svg?style=for-the-badge&logo=injectable&logoColor=white
-[injectable-url]: https://pub.dev/packages/injectable
-[intl]: https://img.shields.io/badge/Intl-FFA500.svg?style=for-the-badge&logo=dart&logoColor=white
-[intl-url]: https://pub.dev/packages/intl
-[instagram-shield]: https://img.shields.io/badge/Instagram-%23E4405F.svg?style=for-the-badge&logo=instagram&logoColor=white
-[instagram-url]: https://www.instagram.com/codeincouture/
-[license-shield]: https://img.shields.io/badge/License-MIT-%23000000.svg?style=for-the-badge&logo=license&logoColor=white
-[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/LinkedIn-%230A66C2.svg?style=for-the-badge&logo=linkedin&logoColor=white
-[linkedin-url]: https://www.linkedin.com/in/tanja-polz-5636401a5/
-[mappable]: https://img.shields.io/badge/Dart%20Mappable-008080.svg?style=for-the-badge&logo=dart&logoColor=white
-[mappable-url]: https://pub.dev/packages/dart_mappable
-[mockapi]: https://img.shields.io/badge/MockAPI-9cf.svg?style=for-the-badge&logo=api&logoColor=white
-[mockapi-url]: https://mockapi.io/projects
-[mocktail]: https://img.shields.io/badge/Mocktail-blue.svg?style=for-the-badge&logo=dart&logoColor=white
-[mocktail-url]: https://pub.dev/packages/mocktail
-[riverpod]: https://img.shields.io/badge/Riverpod-0468D7.svg?style=for-the-badge&logo=riverpod&logoColor=white
-[riverpod-url]: https://pub.dev/packages/flutter_riverpod
-[twitter-shield]: https://img.shields.io/badge/Twitter-%231DA1F2.svg?style=for-the-badge&logo=twitter&logoColor=white
-[twitter-url]: https://twitter.com/_foxnoir_?lang=de
-[very-good]: https://img.shields.io/badge/Very%20Good%20Analysis-B22C89.svg?style=for-the-badge&logo=verygood&logoColor=white
-[very-good-url]: https://pub.dev/packages/very_good_analysis
-[x-shield]: https://img.shields.io/badge/-%23000000.svg?style=for-the-badge&logo=x&logoColor=white
-[x-url]: https://twitter.com/_foxnoir_?lang=de

@@ -6,6 +6,10 @@ import 'package:book_dragon/features/auth/domain/repositories/auth_repository.da
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
+import 'package:riverpod/riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+
+part 'auth_repo_impl.g.dart';
 
 /// talks to datasource
 /// gets result/exception returns result/failure
