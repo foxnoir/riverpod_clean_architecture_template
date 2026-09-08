@@ -1,5 +1,5 @@
-import 'package:book_dragon/core/errors/exceptions.dart';
-import 'package:book_dragon/core/errors/firebase_exception_messages.dart';
+import 'package:book_dragon/core/router/errors/exceptions.dart';
+import 'package:book_dragon/core/router/errors/firebase_exception_messages.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';

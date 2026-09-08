@@ -1,5 +1,5 @@
-import 'package:book_dragon/core/errors/exception_messages.dart';
-import 'package:book_dragon/core/errors/exceptions.dart';
+import 'package:book_dragon/core/router/errors/exception_messages.dart';
+import 'package:book_dragon/core/router/errors/exceptions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class FirebaseAuthExceptionMapper {

@@ -1,5 +1,5 @@
-import 'package:book_dragon/core/errors/exceptions.dart';
-import 'package:book_dragon/core/errors/failures.dart';
+import 'package:book_dragon/core/router/errors/exceptions.dart';
+import 'package:book_dragon/core/router/errors/failures.dart';
 import 'package:book_dragon/core/utils/type_defs.dart';
 import 'package:book_dragon/features/on_boarding/data/data_sources/on_boarding_local_data_source.dart';
 import 'package:book_dragon/features/on_boarding/domain/repos/on_boarding_repo.dart';

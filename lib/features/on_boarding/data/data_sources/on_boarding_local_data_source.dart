@@ -1,4 +1,4 @@
-import 'package:book_dragon/core/errors/exceptions.dart';
+import 'package:book_dragon/core/router/errors/exceptions.dart';
 import 'package:book_dragon/features/storage/prefs.dart';
 import 'package:injectable/injectable.dart';
 

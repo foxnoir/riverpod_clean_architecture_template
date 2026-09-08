@@ -2,7 +2,7 @@ import 'package:book_dragon/core/router/app_router.dart';
 import 'package:book_dragon/features/auth/presentation/views/auth_screen.dart';
 import 'package:book_dragon/features/on_boarding/presentation/views/on_boarding_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:book_dragon/l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';

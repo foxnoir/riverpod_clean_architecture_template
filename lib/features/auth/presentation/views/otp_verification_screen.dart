@@ -19,33 +19,35 @@ class OTPVerificationScreen extends ConsumerWidget {
         image: AppImg.startBg,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset(AppImg.otp),
-              SizedBox(height: 26.h),
-              Pinput(
-                length: 6,
-                onCompleted: (pin) async {
-                  CoreUtils.showLoader(context);
-                  // await ref.read(authControllerProvider).verifyOTP(
-                  //       context: context,
-                  //       verificationId: verificationId,
-                  //       otp: pin,
-                  //     );
-                },
-                defaultPinTheme: PinTheme(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 20,
-                    vertical: 16,
-                  ),
-                  decoration: BoxDecoration(
-                    color: AppColor.lightGreen,
-                    borderRadius: BorderRadius.circular(8),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(AppImg.otp),
+                SizedBox(height: 26.h),
+                Pinput(
+                  length: 6,
+                  onCompleted: (pin) async {
+                    CoreUtils.showLoader(context);
+                    // await ref.read(authControllerProvider).verifyOTP(
+                    //       context: context,
+                    //       verificationId: verificationId,
+                    //       otp: pin,
+                    //     );
+                  },
+                  defaultPinTheme: PinTheme(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 20,
+                      vertical: 16,
+                    ),
+                    decoration: BoxDecoration(
+                      color: AppColor.lightGreen,
+                      borderRadius: BorderRadius.circular(8),
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

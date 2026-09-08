@@ -3,7 +3,7 @@ import 'package:book_dragon/core/extensions/localization_extensions.dart';
 import 'package:book_dragon/core/theme/consts.dart';
 import 'package:book_dragon/global_widgets/app_elevated_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:book_dragon/l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SignIn extends StatelessWidget {

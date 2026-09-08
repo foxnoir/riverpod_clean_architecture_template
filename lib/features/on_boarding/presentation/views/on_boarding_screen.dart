@@ -9,7 +9,7 @@ import 'package:book_dragon/features/on_boarding/presentation/views/widgets/on_b
 import 'package:book_dragon/global_widgets/app_elevated_button.dart';
 import 'package:book_dragon/global_widgets/app_img_container.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:book_dragon/l10n/app_localizations.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
